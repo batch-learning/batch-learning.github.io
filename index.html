@@ -1,11 +1,137 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hello World</title>
+  <title>BATCH</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=1000">
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <!-- <link rel="icon" href="images/favicon.png"> -->
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="BATCH: Behavior Alignment for Cross-Embodiment Learning from Humans" />
+  <meta property="og:description"
+    content="BATCH explicitly aligns human and robot behaviors via self-supervised temporal correspondences, then leverages them for cross-embodiment video-action co-training and style transfer." />
+
+  <style>
+    /* ---- Page-specific accents (edit ACCENT to taste) ---- */
+    :root {
+      --accent: #2457c5;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    a:hover {
+      color: var(--accent) !important;
+    }
+
+    .caption {
+      color: #555;
+      font-size: 0.8em;
+      line-height: 1.6em;
+      text-align: left;
+      margin-top: 0.75em;
+    }
+  </style>
 </head>
-<body>
-  <h1>Hello World</h1>
+
+<body id="top">
+
+  <!-- Main -->
+  <div id="main"
+    style="padding-bottom:2em; padding-top: 5em; width: 60em; max-width: 70em; margin-left: auto; margin-right: auto;">
+
+    <section id="paper">
+
+      <!-- TODO: swap in your institution logos here (box alt), same pattern as maniWAV -->
+      <!--
+            <div class="box alt" style="margin-bottom: 1em;">
+                <div class="row 0% uniform" style="width: 100%; display: flex; justify-content: space-between;">
+                    <div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 33%">
+                        <span class="image fit"><img src="images/logo1.png" alt=""></span>
+                    </div>
+                </div>
+            </div>
+            -->
+
+      <!-- Title -->
+      <h1 style="text-align: center; margin-bottom: 0.2em; color: var(--accent); font-size: 260%;">
+        BATCH: Behavior Alignment for Cross-Embodiment Learning from Humans
+      </h1>
+
+      <!-- Links -->
+      <!-- <div style="text-align:center; margin-bottom: 1em;">
+        <span>
+          <a href="paper.pdf" class="button">
+            <span class="icon"><i class="fa fa-file-pdf-o"></i></span>
+            <span>Paper</span>
+          </a>
+        </span> -->
+        <!-- TODO: add once available
+                <span>
+                    <a href="#" class="button">
+                        <span class="icon"><i class="fa fa-youtube-play"></i></span>
+                        <span>Video</span>
+                    </a>
+                </span>
+                <span>
+                    <a href="#" class="button">
+                        <span class="icon"><i class="fa fa-github"></i></span>
+                        <span>Code</span>
+                    </a>
+                </span>
+                <span>
+                    <a href="#" class="button">
+                        <span class="icon"><i class="fa fa-database"></i></span>
+                        <span>Dataset</span>
+                    </a>
+                </span>
+                -->
+      <!-- </div> -->
+
+      <hr>
+
+      <!-- Abstract -->
+      <h3>Abstract</h3>
+      <p style="color: black;">
+        Human demonstrations provide a scalable source of diverse manipulation data, but leveraging them for robot
+        learning remains challenging due to differences in embodiment, viewpoint, action spaces, and temporal structure.
+        We introduce <b>BATCH</b>, a cross-embodiment learning framework that explicitly aligns human and robot
+        behaviors. BATCH learns self-supervised temporal representations with a cycle-consistency objective to establish
+        cross-embodiment correspondences without manual annotation. We further introduce two complementary training
+        objectives that leverage these correspondences within an autoregressive video-action diffusion model:
+        behavior-aligned co-training and human-to-robot style transfer. On real-world manipulation tasks, BATCH improves
+        generalization to unseen task configurations compared with training on unaligned data and prior cross-embodiment
+        baselines, with additional gains from the style-transfer objective. Our results demonstrate that explicit
+        behavior alignment enables more effective transfer from human demonstrations to robot policies.
+      </p>
+
+      <hr>
+
+      <!-- Method -->
+      <h3>Method</h3>
+      <div style="text-align: center;">
+        <span class="image fit">
+          <img src="images/method.png" alt="Method overview figure">
+        </span>
+        <p class="caption">
+          <strong>Figure 2: BATCH method.</strong> (A) Behavior Alignment: GTCC encoder
+          trained with multi-cycle consistency learns shared temporal embeddings from unaligned
+          demonstrations; the trained encoder then combines with DTW to retrieve behavior-aligned
+          human and robot segments. (B) Cross-Embodiment Video Action Model: (a)
+          aligned human and robot trajectories are encoded as separate streams and input to a
+          diffusion transformer; (b) the attention pattern supports both joint co-training and
+          human-to-robot style transfer objective within the same model; and (c) at deployment, the
+          robot stream is used to execute policy in scenarios only seen in human data.
+        </p>
+      </div>
+
+    </section>
+
+  </div>
+
 </body>
+
 </html>
