@@ -1,0 +1,75 @@
+/* Animated "Behavior Alignment" explainer (Method, part A) */
+#ba-anim button {
+  all: unset;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: center;
+}
+
+#ba-anim .ba-stage {
+  border: solid 2px #efefef;
+  border-radius: 8px;
+  padding: 0.5em;
+  background: #fff;
+}
+
+#ba-anim svg { display: block; width: 100%; height: auto; font-family: "Source Sans Pro", Helvetica, sans-serif; }
+
+#ba-anim .ba-ctrl {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-top: 0.75em;
+}
+
+#ba-anim .ba-play {
+  width: 2.2em;
+  height: 2.2em;
+  flex: none;
+  border-radius: 50%;
+  background: #333;
+  color: #fff;
+  font-size: 0.7em;
+  line-height: 2.2em;
+}
+
+#ba-anim .ba-steps {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 4px;
+}
+
+#ba-anim .ba-step {
+  position: relative;
+  overflow: hidden;
+  padding: 0.45em 0.6em 0.55em;
+  border-radius: 5px;
+  background: #f4f4f4;
+  font-size: 0.7em;
+  line-height: 1.3em;
+  text-align: left;
+  color: #888;
+}
+
+#ba-anim .ba-step:hover { color: #333; }
+#ba-anim .ba-step.on { color: black; }
+#ba-anim .ba-step b { color: inherit; font-weight: normal; margin-right: 0.35em; opacity: 0.6; }
+
+#ba-anim .ba-step i {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 0;
+  background: var(--accent);
+}
+
+#ba-anim .ba-text {
+  margin: 0.6em 0 0 0;
+  min-height: 3.2em;
+  font-size: 0.8em;
+  line-height: 1.6em;
+  color: #555;
+}

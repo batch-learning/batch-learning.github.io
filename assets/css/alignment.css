@@ -1,0 +1,223 @@
+/* Alignment Results section */
+#alignment {
+  --good: #2e9e5b;
+  --bad: #d0453b;
+  --line: #e6e6e6;
+}
+
+/* Reset the template's global button styles inside this section */
+#alignment button {
+  all: unset;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: center;
+}
+
+/* ---- Controls bar ---- */
+#alignment .ar-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75em 1.5em;
+  margin-bottom: 1.25em;
+}
+
+#alignment .ar-seg {
+  display: inline-flex;
+  gap: 3px;
+  padding: 3px;
+  border: solid 1px var(--line);
+  border-radius: 8px;
+}
+
+#alignment .ar-seg button {
+  padding: 0.3em 1em;
+  border-radius: 5px;
+  font-size: 0.8em;
+  line-height: 1.6em;
+  color: #787878;
+}
+
+#alignment .ar-seg button:hover { color: #333; }
+#alignment .ar-seg button.on { background: var(--accent); color: #fff; }
+
+#alignment .ar-pager {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+#alignment .ar-pager button {
+  width: 1.9em;
+  height: 1.9em;
+  border-radius: 50%;
+  font-size: 0.75em;
+  line-height: 1.9em;
+  color: #787878;
+}
+
+#alignment .ar-pager button:hover { background: #f2f2f2; color: #333; }
+#alignment .ar-pager button.on { background: #333; color: #fff; }
+#alignment .ar-pager .ar-arrow { font-size: 1em; }
+
+/* ---- Video grid ---- */
+#alignment .ar-grid {
+  display: grid;
+  grid-template-columns: 1.15fr repeat(4, minmax(0, 1fr));
+  gap: 0.4em 0.75em;
+  align-items: start;
+}
+
+#alignment .ar-head {
+  font-size: 0.7em;
+  line-height: 1.4em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a2a2a2;
+  padding-bottom: 0.4em;
+  border-bottom: solid 2px #efefef;
+}
+
+#alignment .ar-head.results { grid-column: 2 / -1; }
+
+#alignment .ar-cell { display: flex; flex-direction: column; gap: 0.35em; padding-top: 0.5em; }
+#alignment .ar-cell.query { padding-right: 0.75em; border-right: solid 2px #efefef; }
+
+#alignment .ar-name {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  font-size: 0.8em;
+  line-height: 1.4em;
+  color: #333;
+}
+
+#alignment .ar-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25em;
+  height: 1.25em;
+  border-radius: 50%;
+  font-size: 0.8em;
+  line-height: 1;
+  color: #fff;
+}
+
+#alignment .good .ar-mark { background: var(--good); }
+#alignment .bad .ar-mark { background: var(--bad); }
+#alignment .good .ar-name { font-weight: bold; color: black; }
+
+#alignment .ar-frame {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #f4f4f4;
+}
+
+#alignment .good .ar-frame { --ring: var(--good); }
+#alignment .bad .ar-frame { --ring: var(--bad); }
+
+#alignment .ar-frame video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* keep the colored ring above the video */
+#alignment .ar-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 3px var(--ring, transparent);
+  pointer-events: none;
+}
+
+/* placeholder shown when a video file is missing */
+#alignment .ar-frame.missing {
+  background: repeating-linear-gradient(135deg, #f4f4f4 0 10px, #ececec 10px 20px);
+}
+
+#alignment .ar-frame.missing video { visibility: hidden; }
+
+#alignment .ar-frame.missing::after {
+  content: attr(data-label);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: monospace;
+  font-size: 11px;
+  color: #999;
+}
+
+#alignment .ar-note {
+  margin: 0;
+  font-size: 0.7em;
+  line-height: 1.45em;
+  color: #555;
+}
+
+/* ---- Playback controls (on the query video) ---- */
+#alignment .ar-ctrl {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 18px 6px 6px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+}
+
+#alignment .ar-ctrl button {
+  width: 26px;
+  height: 26px;
+  flex: none;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  font-size: 12px;
+  line-height: 26px;
+}
+
+#alignment .ar-ctrl button:hover { background: rgba(255, 255, 255, 0.32); }
+
+#alignment .ar-seek {
+  flex: 1;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+  cursor: pointer;
+}
+
+#alignment .ar-track {
+  position: relative;
+  width: 100%;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+#alignment .ar-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0;
+  border-radius: 2px;
+  background: #fff;
+}
+
+/* cells filled from a composite video */
+#alignment .ar-canvas { display: none; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+#alignment .ar-frame.comp video { display: none; }
+#alignment .ar-frame.comp .ar-canvas { display: block; }

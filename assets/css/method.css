@@ -1,0 +1,90 @@
+/* Animated method explainers (Method A + B) */
+.m-anim button {
+  all: unset;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: center;
+}
+
+.m-anim .ba-stage {
+  border: solid 2px #efefef;
+  border-radius: 8px;
+  padding: 0.5em;
+  background: #fff;
+}
+
+.m-anim svg { display: block; width: 100%; height: auto; font-family: "Source Sans Pro", Helvetica, sans-serif; }
+
+.m-anim .ba-ctrl {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-top: 0.75em;
+}
+
+.m-anim .ba-play {
+  width: 2.2em;
+  height: 2.2em;
+  flex: none;
+  border-radius: 50%;
+  background: #333;
+  color: #fff;
+  font-size: 0.7em;
+  line-height: 2.2em;
+}
+
+.m-anim .ba-steps {
+  flex: 1;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: 4px;
+}
+
+.m-anim .ba-step {
+  position: relative;
+  overflow: hidden;
+  padding: 0.45em 0.6em 0.55em;
+  border-radius: 5px;
+  background: #f4f4f4;
+  font-size: 0.7em;
+  line-height: 1.3em;
+  text-align: left;
+  color: #888;
+}
+
+.m-anim .ba-step:hover { color: #333; }
+.m-anim .ba-step.on { color: black; }
+.m-anim .ba-step b { color: inherit; font-weight: normal; margin-right: 0.35em; opacity: 0.6; }
+
+.m-anim .ba-step i {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 0;
+  background: var(--accent);
+}
+
+.m-anim .ba-text {
+  margin: 0.6em 0 0 0;
+  min-height: 3.2em;
+  font-size: 0.8em;
+  line-height: 1.6em;
+  color: #555;
+}
+
+#ba-anim .ba-vid {
+  position: absolute; inset: 0; border-radius: 8px; background: #fff; opacity: 0;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5em; padding: 1em 1.5em;
+}
+#ba-anim .ba-vcol { display: flex; flex-direction: column; gap: 0.4em; min-height: 0; }
+#ba-anim .ba-vlab { font-size: 0.8em; }
+#ba-anim .ba-vbox { position: relative; flex: 1; min-height: 0; border: 3px solid; border-radius: 6px; overflow: hidden; background: #111; }
+#ba-anim .ba-vbox video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+#ba-anim .ba-vbox em { position: absolute; left: 0.5em; top: 0.5em; padding: 0.1em 0.5em; border-radius: 4px; color: #fff; font-style: normal; font-size: 0.7em; }
+#ba-anim .ba-vbar { position: relative; height: 1.5em; border-radius: 4px; overflow: hidden; background: #eee; }
+#ba-anim .ba-vbar span { position: absolute; top: 0; bottom: 0; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.6em; white-space: nowrap; overflow: hidden; border-right: 1px solid #fff; }
+#ba-anim .ba-vbar span.irr { background: repeating-linear-gradient(45deg, #e2e2e2 0 4px, #cfcfcf 4px 8px); color: #666; }
+#ba-anim .ba-vbar i { position: absolute; top: -2px; bottom: -2px; width: 3px; margin-left: -1px; background: #222; }

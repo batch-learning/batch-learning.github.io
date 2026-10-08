@@ -1,0 +1,192 @@
+/* Policy Results section */
+#policy {
+  --ours: var(--accent);
+  --line: #e6e6e6;
+}
+
+#policy button {
+  all: unset;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: center;
+}
+
+/* ---- Charts ---- */
+#policy .pr-charts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2em;
+  margin: 1.5em 0 0.5em;
+}
+
+#policy .pr-chart h4 {
+  margin: 0 0 0.15em;
+  font-size: 0.9em;
+  line-height: 1.4em;
+  color: black;
+}
+
+#policy .pr-metric {
+  margin: 0 0 0.75em;
+  font-size: 0.7em;
+  line-height: 1.4em;
+  color: #888;
+}
+
+#policy .pr-row {
+  display: grid;
+  grid-template-columns: 9.5em minmax(0, 1fr);
+  column-gap: 0.75em;
+  align-items: center;
+  margin-bottom: 0.4em;
+}
+
+#policy .pr-name {
+  font-size: 0.75em;
+  line-height: 1.3em;
+  color: #555;
+  text-align: right;
+}
+
+#policy .pr-row.ours .pr-name { color: black; font-weight: bold; }
+#policy .pr-row.key .pr-name { color: #333; }
+
+#policy .pr-track {
+  position: relative;
+  height: 1.5em;
+  border-radius: 3px;
+  background: #f6f6f6;
+}
+
+#policy .pr-bar {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0;
+  border-radius: 3px;
+  background: #c9c9c9;
+  transition: width 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+#policy .pr-row.ours .pr-bar { background: var(--ours); }
+#policy .pr-row.key .pr-bar { background: #9aa9c9; }
+
+#policy .pr-val {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 0.4em;
+  font-size: 0.7em;
+  line-height: 1;
+  color: #333;
+  white-space: nowrap;
+  transition: left 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+#policy .pr-row.ours .pr-val { font-weight: bold; color: black; }
+
+/* gain annotation: OURS vs OURS w/o alignment */
+#policy .pr-gain {
+  margin: 0.5em 0 0 10.3em;
+  font-size: 0.7em;
+  line-height: 1.4em;
+  color: #555;
+}
+
+#policy .pr-gain b { color: var(--ours); }
+
+/* ---- Rollouts ---- */
+#policy .pr-bar-ctrl {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75em 1.5em;
+  margin: 2em 0 1em;
+}
+
+#policy .pr-seg {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  gap: 3px;
+  padding: 3px;
+  border: solid 1px var(--line);
+  border-radius: 8px;
+}
+
+#policy .pr-seg button {
+  white-space: nowrap;
+  padding: 0.3em 1em;
+  border-radius: 5px;
+  font-size: 0.8em;
+  line-height: 1.6em;
+  color: #787878;
+}
+
+#policy .pr-seg button:hover { color: #333; }
+#policy .pr-seg button.on { background: var(--accent); color: #fff; }
+#policy .pr-seg.small button { padding: 0.2em 0.75em; font-size: 0.7em; }
+#policy .pr-seg.small button.on { background: #333; }
+
+#policy .pr-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr));
+  gap: 0.9em 0.75em;
+  align-items: stretch;
+}
+
+/* OURS large on the left (spans both rows); the 4 baselines in a 2×2 grid on the right */
+#policy .pr-cell { display: flex; flex-direction: column; gap: 0.35em; min-width: 0; }
+#policy .pr-cell.ours { grid-row: span 2; }
+#policy .pr-cell.ours .pr-frame { flex: 1; aspect-ratio: auto; min-height: 0; }
+
+#policy .pr-cell-name {
+  font-size: 0.75em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4em;
+  color: #333;
+}
+
+#policy .pr-cell.ours .pr-cell-name { font-weight: bold; color: var(--ours); font-size: 0.9em; }
+
+#policy .pr-frame {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #f4f4f4;
+}
+
+#policy .pr-cell.ours .pr-frame { box-shadow: 0 0 0 3px var(--ours); }
+
+#policy .pr-frame video { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+#policy .pr-frame.missing { background: repeating-linear-gradient(135deg, #f4f4f4 0 10px, #ececec 10px 20px); }
+#policy .pr-frame.missing video { visibility: hidden; }
+
+#policy .pr-frame.missing::after {
+  content: attr(data-label);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: monospace;
+  font-size: 11px;
+  color: #999;
+}
+
+#policy .pr-speed {
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-family: monospace;
+  font-size: 11px;
+  line-height: 16px;
+}

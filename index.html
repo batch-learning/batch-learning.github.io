@@ -6,7 +6,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=1000">
   <link rel="stylesheet" href="assets/css/main.css" />
-  <!-- <link rel="icon" href="images/favicon.png"> -->
+  <link rel="stylesheet" href="assets/css/alignment.css" />
+  <link rel="stylesheet" href="assets/css/motivation.css" />
+  <link rel="stylesheet" href="assets/css/policy.css" />
+  <link rel="stylesheet" href="assets/css/method.css" />
+  <link rel="icon" href="images/favicon.svg">
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="BATCH: Behavior Alignment for Cross-Embodiment Learning from Humans" />
@@ -58,7 +62,11 @@
 
       <!-- Title -->
       <h1 style="text-align: center; margin-bottom: 0.2em; color: var(--accent); font-size: 260%;">
-        BATCH: Behavior Alignment for Cross-Embodiment Learning from Humans
+        BATCH: <u style="text-underline-offset: 0.12em; text-decoration-thickness: 0.06em;">B</u>ehavior <u
+          style="text-underline-offset: 0.12em; text-decoration-thickness: 0.06em;">A</u>lignmen<u
+          style="text-underline-offset: 0.12em; text-decoration-thickness: 0.06em;">t</u> for <u
+          style="text-underline-offset: 0.12em; text-decoration-thickness: 0.06em;">C</u>ross-Embodiment Learning from
+        <u style="text-underline-offset: 0.12em; text-decoration-thickness: 0.06em;">H</u>umans
       </h1>
 
       <!-- Links -->
@@ -69,7 +77,7 @@
             <span>Paper</span>
           </a>
         </span> -->
-        <!-- TODO: add once available
+      <!-- TODO: add once available
                 <span>
                     <a href="#" class="button">
                         <span class="icon"><i class="fa fa-youtube-play"></i></span>
@@ -93,45 +101,140 @@
 
       <hr>
 
-      <!-- Abstract -->
-      <h3>Abstract</h3>
-      <p style="color: black;">
-        Human demonstrations provide a scalable source of diverse manipulation data, but leveraging them for robot
-        learning remains challenging due to differences in embodiment, viewpoint, action spaces, and temporal structure.
-        We introduce <b>BATCH</b>, a cross-embodiment learning framework that explicitly aligns human and robot
-        behaviors. BATCH learns self-supervised temporal representations with a cycle-consistency objective to establish
-        cross-embodiment correspondences without manual annotation. We further introduce two complementary training
-        objectives that leverage these correspondences within an autoregressive video-action diffusion model:
-        behavior-aligned co-training and human-to-robot style transfer. On real-world manipulation tasks, BATCH improves
-        generalization to unseen task configurations compared with training on unaligned data and prior cross-embodiment
-        baselines, with additional gains from the style-transfer objective. Our results demonstrate that explicit
-        behavior alignment enables more effective transfer from human demonstrations to robot policies.
-      </p>
+      <!-- Motivation (styles: assets/css/motivation.css, logic + config: assets/js/motivation.js) -->
+      <div id="motivation">
+        <h3>Why Behavior Alignment?</h3>
+        <p style="color: black;">
+          Human demonstrations provide a scalable source of manipulation data, but they are not simply additional data
+          from a different visual domain. As the two videos below illustrate, the human completes the task much faster
+          than the robot and includes an extra segment to reset the cup that has no counterpart in the robot trajectory.
+          Prior co-training approaches typically sample human and robot trajectories independently, so paired clips may
+          correspond to different stages of the task—for example, the human may be grasping the cup while the robot is
+          placing it on saucer. BATCH instead performs behavior alignment, identifying frame-level correspondences between
+          equivalent stages of task execution across embodiments.
+        </p>
+        <div class="mv-modes">
+          <div class="mv-seg">
+            <button data-mode="raw" class="on">Demonstrations</button>
+            <button data-mode="random">Prior work: random segments</button>
+            <button data-mode="aligned">BATCH: aligned segments</button>
+          </div>
+          <p class="mv-mode-note" data-role="mode-note"></p>
+        </div>
+        <div class="mv-videos">
+          <div class="mv-cell">
+            <div class="mv-name">Human demonstration <span data-role="human-note"></span></div>
+            <div class="mv-frame" data-label="human video">
+              <video data-who="human" muted playsinline preload="auto"></video>
+              <div class="mv-phase" data-phase="human"></div>
+              <div class="mv-time" data-time="human"></div>
+            </div>
+          </div>
+          <div class="mv-cell">
+            <div class="mv-name">Robot demonstration <span>slower</span></div>
+            <div class="mv-frame" data-label="robot video">
+              <video data-who="robot" muted playsinline preload="auto"></video>
+              <div class="mv-phase" data-phase="robot"></div>
+              <div class="mv-time" data-time="robot"></div>
+            </div>
+          </div>
+        </div>
+        <div class="mv-timeline">
+          <div class="mv-label">Human</div>
+          <div class="mv-track" data-role="human-track"></div>
+          <div></div>
+          <div class="mv-linkrow">
+            <svg class="mv-links" data-role="links" viewBox="0 0 100 10" preserveAspectRatio="none"></svg>
+            <div class="mv-linktext" data-role="linktext"></div>
+          </div>
+          <div class="mv-label">Robot</div>
+          <div class="mv-track" data-role="robot-track"></div>
+          <div></div>
+          <div class="mv-axis" data-role="axis"></div>
+        </div>
+        <div class="mv-legend" data-role="legend"></div>
+        <!-- <p class="caption">
+          Colored segments mark equivalent task phases in each demonstration; the human executes them faster and ends
+          with an irrelevant segment that has no robot counterpart. Boxed regions show sampled human-robot
+          pairs: sampling segments randomly as in prior works pairs different phases, while BATCH pairs temporally
+          corresponding
+          behavior.
+        </p> -->
+      </div>
 
       <hr>
 
-      <!-- Method -->
-      <h3>Method</h3>
-      <div style="text-align: center;">
-        <span class="image fit">
-          <img src="images/method.png" alt="Method overview figure">
-        </span>
-        <p class="caption">
-          <strong>Figure 2: BATCH method.</strong> (A) Behavior Alignment: GTCC encoder
-          trained with multi-cycle consistency learns shared temporal embeddings from unaligned
-          demonstrations; the trained encoder then combines with DTW to retrieve behavior-aligned
-          human and robot segments. (B) Cross-Embodiment Video Action Model: (a)
-          aligned human and robot trajectories are encoded as separate streams and input to a
-          diffusion transformer; (b) the attention pattern supports both joint co-training and
-          human-to-robot style transfer objective within the same model; and (c) at deployment, the
-          robot stream is used to execute policy in scenarios only seen in human data.
+      <!-- Method (styles: assets/css/method.css, animations: assets/js/alignment-anim.js, assets/js/vam-anim.js) -->
+      <div id="method">
+        <h3>Method</h3>
+        <p style="color: black;">
+          BATCH has two parts. <b>(A) Behavior alignment</b> learns a shared temporal embedding from unaligned human and
+          robot demonstrations and uses DTW to retrieve behavior-aligned segment pairs. <b>(B) A cross-embodiment video
+          action model</b> trains on these pairs with joint co-training and human-to-robot style transfer.
         </p>
+        <h4 style="color: black; margin: 1.25em 0 0.5em;">(A) Behavior Alignment</h4>
+        <div id="ba-anim" class="m-anim" style="margin-bottom: 2em;"></div>
+        <h4 style="color: black; margin: 1.25em 0 0.5em;">(B) Cross-Embodiment Video Action Model</h4>
+        <div id="vam-anim" class="m-anim"></div>
       </div>
+
+      <!-- <hr> -->
+
+      <!-- Alignment Results (styles: assets/css/alignment.css, logic + config: assets/js/alignment.js) -->
+      <!-- <div id="alignment">
+        <h3>Alignment Results</h3>
+        <p style="color: black;">
+          Given a robot video, BATCH retrieves the human demonstration of the same behavior. Baselines are
+          distracted by scene appearance or retrieve the right task at the wrong moment.
+        </p>
+        <div class="ar-bar">
+          <div class="ar-seg" data-role="tasks"></div>
+          <div class="ar-pager">
+            <button class="ar-arrow" data-act="prev" title="Previous">&#8249;</button>
+            <div class="ar-pager" data-role="examples"></div>
+            <button class="ar-arrow" data-act="next" title="Next">&#8250;</button>
+          </div>
+        </div>
+        <div class="ar-grid"></div>
+        <p class="caption" data-role="caption"></p>
+      </div> -->
+
+      <!-- <hr> -->
+
+      <!-- Policy Results (styles: assets/css/policy.css, logic + config: assets/js/policy.js) -->
+      <!-- <div id="policy">
+        <h3>Policy Results</h3>
+        <p style="color: black;">
+          We evaluate policies on two real-world manipulation tasks under unseen configurations: new backgrounds, target
+          and distractor objects for <em>Object in Container</em>, and new objects and environments for
+          <em>Cup on Saucer</em>. BATCH achieves the strongest performance on both tasks. Removing behavior alignment and
+          randomly pairing human and robot trajectories instead degrades performance on both, showing that
+          cross-embodiment supervision works best when human and robot data show the same behavior.
+        </p>
+        <div class="pr-charts" data-role="charts"></div>
+        <div class="pr-bar-ctrl">
+          <div class="pr-seg" data-role="r-tasks"></div>
+          <div class="pr-seg small" data-role="r-settings"></div>
+        </div>
+        <div class="pr-grid" data-role="r-grid"></div>
+        <p class="caption">
+          <strong>Real-world rollouts in unseen configurations.</strong> <em>OURS w/o alignment</em> randomly samples
+          human and robot trajectories instead of using behavior-aligned pairs; <em>EgoVerse</em> co-trains on human and
+          robot data without the cross-embodiment style-transfer objective; <em>OURS w/ OT</em> replaces style transfer
+          with an optimal-transport loss on observation tokens; <em>Robot Only</em> uses no human data.
+        </p>
+      </div> -->
+
 
     </section>
 
   </div>
 
+  <script src="assets/js/motivation.js"></script>
+  <!-- <script src="assets/js/alignment.js"></script> -->
+  <!-- <script src="assets/js/policy.js"></script> -->
+  <script src="assets/js/alignment-anim.js"></script>
+  <script src="assets/js/vam-anim.js"></script>
 </body>
 
 </html>
