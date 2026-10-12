@@ -1,0 +1,21 @@
+[
+  {
+    "query": "robot_episode_000002",
+    "best_target": "human_episode_000000",
+    "best_target_chunk": "human_episode_000000",
+    "target_chunk_range": [
+      0,
+      499
+    ],
+    "dtw_norm_cost": 2.277511701127079,
+    "repr": "image",
+    "metric": "l2",
+    "query_window": [
+      836,
+      1119
+    ],
+    "query_len": 1539,
+    "target_len": 500,
+    "video": "/tmp/claude-410033/-local-real-liuzeyi-dreamzero/f1f47972-1e2b-438c-9ea5-7d6974e9126a/scratchpad/strips_cyc/2/t1/robot_episode_000002__w836-1119__dtw_image_l2__to__human_episode_000000.mp4"
+  }
+]

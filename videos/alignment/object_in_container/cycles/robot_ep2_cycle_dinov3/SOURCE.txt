@@ -1,0 +1,6 @@
+variant: DINOv3 ViT-S/16 cls-token features, subsequence DTW
+robot  : episode 2, one full cycle = frames 836..1119 (284 frames)
+t1   : ood_t2 (3 episodes)  --image-features dinov3_cls --dtw-repr image --align-method dtw
+t2   : ood_t3 (7 episodes)  --image-features dinov3_cls --dtw-repr image --align-method dtw
+t3   : ood_t4 (12 episodes)  --image-features dinov3_cls --dtw-repr image --align-method dtw
+t4   : ood_t5 (4 episodes)  --image-features dinov3_cls --dtw-repr image --align-method dtw

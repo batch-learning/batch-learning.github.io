@@ -22,7 +22,7 @@
     { name: 'Encode',                start: 0,    text: 'A shared GTCC encoder φ embeds every frame of an unaligned human demo (v₁:M) and robot demo (u₁:N).' },
     { name: 'Soft nearest neighbors', start: 3.5,  text: 'A robot frame uᵢ attends to all human frames with weights αᵢⱼ. Since a task can revisit similar states, a Gaussian mixture over αᵢ keeps several hypotheses, giving multiple soft nearest neighbors ṽᵢₖ.' },
     { name: 'Cycle consistency',     start: 7,    text: 'Each ṽᵢₖ is mapped back onto the robot sequence, giving a cycle-back distribution with mean μ̂ᵢₖ and spread σ̂ᵢₖ. A hypothesis that lands sharply on frame i has low loss; one that misses, or is uncertain, has high loss. A relevance weight bᵢ down-weights frames with no counterpart.' },
-    { name: 'DTW matching',          start: 11,   text: 'Subsequence DTW traces the minimum-cost monotonic path through the frame-to-frame cost matrix in the learned embedding space. Each step of the path links a robot frame to a human frame; irrelevant human frames are discarded.' },
+    { name: 'DTW matching',          start: 11,   text: 'Subsequence DTW traces the minimum-cost monotonic path through the frame-to-frame cost matrix in the learned embedding space. Each step of the path links a robot frame to a human frame.' },
     { name: 'Aligned demos',         start: 15,   text: '' },
   ];
   // Final aligned videos (segment times in seconds, same as the motivation section)

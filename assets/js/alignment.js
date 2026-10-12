@@ -1,170 +1,399 @@
-// Alignment Results: robot query video -> retrieved human video per method.
+// Alignment Results: grid of robot segments; hovering one shows the BATCH-retrieved human video in each human scene.
 (() => {
   // ================= Config =================
-  const METHODS = [
-    { key: 'batch', name: 'BATCH (Ours)', good: true },
-    { key: 'clip',  name: 'CLIP' },
-    { key: 'xclip', name: 'X-CLIP' },
-    { key: 'tcn',   name: 'TCN' },
-  ];
+  // File layout (per task), matching retrievals.json in the task folder:
+  //   videos/alignment/<task>/robot/<robotPrefix>_<ep>__w<window><robotSuffix>.mp4
+  //   videos/alignment/<task>/human/<scene dir>/<robotPrefix>_<ep>__w<window>__dtw_image_l2__to__<scene prefix>_<h>.mp4
+  // windows[i] = { ep: robot episode, w: robot frame window, human[k]: human episode retrieved in scenes[k] }.
+  // robotSuffix (optional): extra text at the end of the robot filename, computed from the window.
+  // show (optional): 1-based indices into windows to display, in order; all windows are shown when omitted.
+  // cols (optional): robot thumbnail grid columns (default COLS).
+  // zoom (optional): how much a robot thumbnail grows on hover, e.g. 3 for 3x.
+  // robotSrc / humans (optional): functions building the robot path and the [{ src, name }] human list
+  //   for a window, for tasks whose files don't follow the layout above.
+  // humanCols (optional): human video grid columns (default: one row).
+  // humanZoom (optional): how much a human demonstration in the comparison-mode strip grows on hover.
+  // humanStripCols (optional): columns of that strip, fixed so tiles are the same size for every robot clip.
+  // side (optional): put the robot grid and the human videos side by side.
+  // unit / robotHead / humanHead / humanHint (optional): wording for the caption and the headings.
+  // methods + methodSrc (optional): comparison mode. The selected robot clip's human demonstrations, aligned by
+  //   the `ours` method, are shown as a strip; hovering one shows that demonstration aligned by each of the other
+  //   methods, side by side with the robot. methodSrc(w, method, h) builds the path of human episode h aligned by
+  //   `method`. failures (optional): failures[ep][method suffix][h] explains a misaligned video of any method.
+  //   failureSpans (optional, same keys): [[start, end], ...] seconds; the red border is shown only during them.
+  //   compareCaption (optional): caption text after the task description in comparison mode.
+  // humanSets (optional, comparison mode): [{ key, name, human: [...] }] — the human demonstrations come from several
+  //   scenes; a switch above the strip picks the scene, and methodSrc(w, method, h, set) also receives that set.
+  //   A window may instead carry best: { <set key>: h } to show only that one demonstration per scene; it is then
+  //   shown in the same row as the baselines, with no strip.
+
+  const pad = (ep) => String(ep).padStart(6, '0');
 
   const TASKS = [
-    { key: 'object_in_container', name: 'Object in Container', count: 4, desc: 'The robot picks up an object and places it in a container.' },
-    { key: 'cup_on_saucer',       name: 'Cup on Saucer',       count: 6, desc: 'The robot places a cup on a saucer.' },
-  ];
-
-  // File layout: videos/<task>/<n>/<query|batch|clip|xclip|tcn>.mp4
-  const videoSrc = (task, n, who) => `videos/${task}/${n}/${who}.mp4`;
-
-  // Pre-composited videos with side-by-side panels (one file instead of one per method).
-  // panels: which cell each panel fills, left to right (null = panel not shown).
-  const COMPOSITES = {
-    object_in_container: {
-      1: { src: 'videos/object_in_container/1/composite.mp4', panels: ['query', 'batch', null] },
+    {
+      key: 'object_in_container',
+      name: 'Object in Container',
+      desc: 'The robot picks up a toy, put it in bowl, flip the bowl to dump toy, place the bowl on table, and repeat the above cycle.',
+      // One full cycle of each robot episode is aligned to every human demonstration of the four human scenes, once
+      // per method (folder suffix):
+      //   videos/alignment/object_in_container/cycles/robot_ep<ep>_cycle<suffix>/robot/robot_episode_<ep>__cycle_w<window>.mp4
+      //   videos/alignment/object_in_container/cycles/robot_ep<ep>_cycle<suffix>/human/<scene>/human_episode_<h>.mp4
+      robotSrc: (w) => `videos/alignment/object_in_container/cycles/robot_ep${w.ep}_cycle/robot/robot_episode_${pad(w.ep)}__cycle_w${w.w}.mp4`,
+      methods: [
+        { suffix: '', name: 'BATCH (Ours)', ours: true },
+        { suffix: '_dinov3', name: 'DINOv3 + DTW' },
+        // these files are named human_episode_<h>#c0.mp4; '#' must be URL-encoded or the browser drops the rest
+        { suffix: '_rel_actions', name: 'Action DTW', file: '%23c0' },
+        { suffix: '_no_alignment', name: 'No alignment' },
+      ],
+      methodSrc: (w, m, h, set) =>
+        `videos/alignment/object_in_container/cycles/robot_ep${w.ep}_cycle${m.suffix}/human/${set.key}/human_episode_${pad(h)}${m.file || ''}.mp4`,
+      humanSets: [
+        { key: 't1', name: 'Scene 1' },
+        { key: 't2', name: 'Scene 2' },
+        { key: 't3', name: 'Scene 3' },
+        { key: 't4', name: 'Scene 4' },
+      ],
+      // Generated in assets/js/alignment-oic-failures.js; keyed by '<scene>/<human episode>'
+      failures: window.OIC_ALIGNMENT_FAILURES || {},
+      compareCaption: 'For each human scene we show the demonstration BATCH aligns ' +
+        'best to the robot (lowest alignment cost), next to the same demonstration aligned by the baselines: ' +
+        'DINOv3 + DTW uses pretrained DINOv3 image features, Action DTW uses relative end-effector actions, and ' +
+        'No alignment stretches the human video uniformly. All videos play in sync with the robot.',
+      unit: 'robot episode',
+      robotHead: 'Robot episodes',
+      humanHead: 'Most aligned human demonstration per scene',
+      humanHint: 'red border: misaligned with the robot',
+      cols: 4,
+      zoom: 2,
+      humanZoom: 2,
+      humanStripCols: 6,
+      windows: [
+        // best: the human episode with the lowest BATCH DTW cost per scene (robot_ep<ep>_cycle/alignments.csv)
+        { ep: 0, w: '775-1202', best: { t1: 0, t2: 3, t3: 3, t4: 2 } },
+        { ep: 1, w: '960-1314', best: { t1: 0, t2: 1, t3: 4, t4: 1 } },
+        { ep: 2, w: '836-1119', best: { t1: 2, t2: 2, t3: 0, t4: 3 } },
+        { ep: 3, w: '1530-1909', best: { t1: 1, t2: 0, t3: 6, t4: 3 } },
+      ],
     },
-  };
-
-  // Optional per-example notes: NOTES[taskKey][n - 1] = [batch, clip, xclip, tcn]
-  const NOTES = {};
-  const DEFAULT_NOTES = [
-    'Same behavior, aligned in time.',
-    'Matched scene appearance, wrong behavior.',
-    'Right task, misaligned in time.',
-    'Matched arm motion, wrong behavior.',
+    {
+      key: 'cup_on_saucer',
+      name: 'Cup on Saucer',
+      desc: 'The robot picks up cup from the handle, hand over from one arm to another, and places the cup on saucer.',
+      // Each full robot episode is aligned to every out-of-domain human episode in which the cup starts on the
+      // same side of the saucer, once per method (folder suffix):
+      //   videos/alignment/cup_on_saucer/robot_ep<ep>_vs_all<suffix>/robot/cuprobot_episode_<ep>__full.mp4
+      //   videos/alignment/cup_on_saucer/robot_ep<ep>_vs_all<suffix>/human/cuphnew_episode_<h>.mp4
+      robotSrc: (w) => `videos/alignment/cup_on_saucer/robot_ep${w.ep}_vs_all/robot/cuprobot_episode_${pad(w.ep)}__full.mp4`,
+      methods: [
+        { suffix: '', name: 'BATCH (Ours)', ours: true },
+        { suffix: '_dinov3', name: 'DINOv3 + DTW' },
+        { suffix: '_abs_actions', name: 'Action DTW' },
+        { suffix: '_no_alignment', name: 'No alignment' },
+      ],
+      methodSrc: (w, m, h) => `videos/alignment/cup_on_saucer/robot_ep${w.ep}_vs_all${m.suffix}/human/cuphnew_episode_${pad(h)}.mp4`,
+      // Generated in assets/js/alignment-cup-failures.js
+      failures: window.CUP_ALIGNMENT_FAILURES || {},
+      compareCaption: 'The demonstrations above are aligned to the robot by BATCH. Below we show aligned demonstration selected by baselines: ' +
+        'DINOv3 + DTW uses pretrained DINOv3 image features, Action DTW uses absolute end-effector poses, and ' +
+        'No alignment stretches the human video uniformly. All videos play in sync with the robot.',
+      unit: 'robot episode',
+      robotHead: 'Robot episodes',
+      humanHead: 'BATCH-retrieved human demonstrations',
+      humanHint: 'hover to compare',
+      cols: 6,
+      zoom: 2,
+      humanZoom: 2,
+      humanStripCols: 5,
+      windows: [
+        { ep: 0, human: [1, 5, 9, 13, 17, 19, 21, 22, 23] },
+        { ep: 30, human: [0, 4, 8, 12, 16, 18, 20] },
+        { ep: 62, human: [1, 5, 9, 13, 17, 19, 21, 22, 23] },
+        { ep: 63, human: [1, 5, 9, 13, 17, 19, 21, 22, 23] },
+        { ep: 114, human: [0, 4, 8, 12, 16, 18, 20] },
+        { ep: 124, human: [0, 4, 8, 12, 16, 18, 20] },
+      ],
+    },
   ];
+
+  // Default paths, built from robotPrefix / scenes (used when a task doesn't define robotSrc / humans)
+  const robotClip = (task, w) => `${task.robotPrefix}_${pad(w.ep)}__w${w.w}`;
+  const robotSrc = (task, w) => (task.robotSrc
+    ? task.robotSrc(w)
+    : `videos/alignment/${task.key}/robot/${robotClip(task, w)}${task.robotSuffix ? task.robotSuffix(w) : ''}.mp4`);
+  const humanList = (task, w) => (task.humans
+    ? task.humans(w)
+    : task.scenes.map((scene, k) => ({
+      src: `videos/alignment/${task.key}/human/${scene.dir}/${robotClip(task, w)}__dtw_image_l2__to__${scene.prefix}_${pad(w.human[k])}.mp4`,
+      name: scene.name,
+    })));
+  const shown = (task) => (task.show ? task.show.map((n) => task.windows[n - 1]) : task.windows);
+
+  // Default robot thumbnail grid columns
+  const COLS = 5;
   // ==========================================
 
   const root = document.getElementById('alignment');
   if (!root) return;
 
   const $ = (sel) => root.querySelector(sel);
-  const state = { task: 0, n: 1, playing: true };
+  const state = { task: 0, sel: 0, human: 0, set: 0 };
+  // Comparison mode: the human demonstrations of the selected robot clip (from the selected scene, if any)
+  const compareSet = (task) => (task.humanSets ? task.humanSets[state.set] : null);
+  const compareHumans = (task, win) => {
+    if (!task.humanSets) return win.human;
+    const set = compareSet(task);
+    return win.best ? [win.best[set.key]] : set.human;
+  };
 
   // ---- Build static markup once ----
   $('[data-role=tasks]').innerHTML = TASKS
     .map((t, i) => `<button data-task="${i}">${t.name}</button>`)
     .join('');
-
+  // Hide the task switch while there is only one task
+  $('[data-role=tasks]').style.display = TASKS.length > 1 ? '' : 'none';
 
   const frame = (who, extra = '') =>
-    `<div class="ar-frame" data-label="${who} video"><video data-who="${who}" muted loop playsinline preload="auto"></video><canvas class="ar-canvas" data-who="${who}"></canvas>${extra}</div>`;
+    `<div class="ar-frame" data-label="${who} video"><video data-who="${who}" muted loop playsinline preload="auto"></video>${extra}</div>`;
 
-  $('.ar-grid').innerHTML = `
-    <div class="ar-head">Query robot video</div>
-    <div class="ar-head results">Top-1 retrieved human video</div>
-    <div class="ar-cell query">
-      <div class="ar-name">Robot</div>
-      ${frame('query', `
-        <div class="ar-ctrl">
-          <button data-act="play" title="Play / pause all"></button>
-          <button data-act="restart" title="Restart all">&#8635;</button>
-          <div class="ar-seek" data-act="seek"><div class="ar-track"><div class="ar-fill"></div></div></div>
-        </div>`)}
-    </div>
-    ${METHODS.map((m, k) => `
-      <div class="ar-cell ${m.good ? 'good' : 'bad'}">
-        <div class="ar-name"><span class="ar-mark">${m.good ? '&#10003;' : '&#10005;'}</span>${m.name}</div>
-        ${frame(m.key)}
-        <p class="ar-note" data-note="${k}"></p>
-      </div>`).join('')}
-  `;
+  let robots = [];
+  let humans = [];
 
-  const videos = [...root.querySelectorAll('video')];
-  const query = videos[0];
+  const watchMissing = (v) => v.addEventListener('error', () => v.parentElement.classList.add('missing'));
+  const release = (v) => { v.pause(); v.removeAttribute('src'); v.load(); };
 
-  // Hidden player for composite videos; its panels are drawn into the cells' canvases
-  const comp = document.createElement('video');
-  Object.assign(comp, { muted: true, loop: true, playsInline: true, preload: 'auto' });
-  comp.style.cssText = 'position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;';
-  root.appendChild(comp);
-  let active = null; // current composite config, or null
-  const master = () => (active ? comp : query);
-  const fill = $('.ar-fill');
-  const playBtn = $('[data-act=play]');
-
-  videos.forEach((v) => v.addEventListener('error', () => v.parentElement.classList.add('missing')));
-
-  // ---- Playback ----
-  const playAll = () => {
-    playBtn.innerHTML = state.playing ? '&#10074;&#10074;' : '&#9654;';
-    [...videos, comp].forEach((v) => (v.src && state.playing ? v.play().catch(() => {}) : v.pause()));
-  };
-
-  const seekAll = (t) => [...videos, comp].forEach((v) => { if (v.src) v.currentTime = t; });
-
-  const drawPanels = () => {
-    if (!active || comp.readyState < 2) return;
-    const pw = comp.videoWidth / active.panels.length, ph = comp.videoHeight;
-    active.panels.forEach((who, i) => {
-      const cv = who && root.querySelector(`canvas[data-who=${who}]`);
-      if (!cv) return;
-      if (cv.width !== pw) { cv.width = pw; cv.height = ph; }
-      cv.getContext('2d').drawImage(comp, i * pw, 0, pw, ph, 0, 0, pw, ph);
-    });
-  };
-
-  // Keep followers locked to the master video (query, or the composite) and update the progress bar
-  (function tick() {
-    const q = master();
-    if (q.duration) {
-      fill.style.width = `${(q.currentTime / q.duration) * 100}%`;
-      videos.forEach((v) => {
-        if (v !== q && v.src && Math.abs(v.currentTime - q.currentTime) > 0.15) v.currentTime = q.currentTime;
-      });
+  // Grow or shrink the human grid to n cells, reusing existing video elements
+  function humanCells(n) {
+    const box = $('[data-role=humans]');
+    let cells = [...box.querySelectorAll('[data-scene]')];
+    cells.slice(n).forEach((cell) => { release(cell.querySelector('video')); cell.remove(); });
+    for (let k = cells.length; k < n; k++) {
+      box.insertAdjacentHTML('beforeend', `
+        <div class="ar-cell" data-scene="${k}">
+          <div class="ar-name"><span data-role="scene-name"></span></div>
+          ${frame(`human ${k + 1}`)}
+        </div>`);
+      watchMissing(box.lastElementChild.querySelector('video'));
     }
-    drawPanels();
+    cells = [...box.querySelectorAll('[data-scene]')];
+    humans = cells.map((cell) => cell.querySelector('video'));
+    return cells;
+  }
+
+  // ---- Comparison mode: one human demonstration aligned by every method, next to the robot ----
+  function renderCompare(task, win) {
+    const box = $('[data-role=humans]');
+    humans.forEach(release);
+    box.style.gridTemplateColumns = '';
+    box.classList.add('compare');
+    const ours = task.methods.find((m) => m.ours) || task.methods[0];
+    const list = compareHumans(task, win), set = compareSet(task);
+    // A single demonstration: show ours in the same row as the baselines instead of a strip above them
+    const inline = !!win.best;
+    const baselines = task.methods.map((m, k) => [m, k]).filter(([m]) => inline || !m.ours);
+    const cols = task.humanStripCols || Math.ceil(list.length / 2);
+    const rows = Math.ceil(list.length / cols);
+    box.innerHTML = `
+      ${task.humanSets ? `<div class="ar-seg ar-sets">${task.humanSets.map((s, k) =>
+        `<button data-set="${k}" class="${k === state.set ? 'on' : ''}">${s.name}${s.human ? ` <span class="ar-count">${s.human.length}</span>` : ''}</button>`).join('')}</div>` : ''}
+      ${inline ? '' : `<div class="ar-hstrip${task.humanZoom ? ' zoom' : ''}" style="grid-template-columns: repeat(${cols}, minmax(0, 1fr)); --zoom: ${task.humanZoom || 1}">
+        ${list.map((h, j) => {
+          // Grow each tile from a point proportional to its grid position so the enlarged tile stays inside the strip
+          const c = j % cols, r = Math.floor(j / cols);
+          const origin = `${cols > 1 ? (c / (cols - 1)) * 100 : 50}% ${rows > 1 ? (r / (rows - 1)) * 100 : 50}%`;
+          return `<div class="ar-htile" data-human="${j}" style="transform-origin: ${origin}">${frame(`human ${j + 1}`)}</div>`;
+        }).join('')}
+      </div>
+      <div class="ar-head ar-subhead">Baselines on the selected demonstration ${task.failures ? '<span class="ar-hint">red border: misaligned with the robot</span>' : ''}</div>`}
+      <div class="ar-compare" style="grid-template-columns: repeat(${baselines.length + 1}, minmax(0, 1fr))">
+        <div class="ar-cell" data-ref><div class="ar-name">Robot</div>${frame('robot')}</div>
+        ${baselines.map(([m, k]) => `
+          <div class="ar-cell${m.ours ? ' ours' : ''}" data-method="${k}">
+            <div class="ar-name">${m.name}</div>${frame(m.name)}
+            <p class="ar-fail-note"></p>
+          </div>`).join('')}
+      </div>`;
+    humans = [...box.querySelectorAll('video')];
+    humans.forEach(watchMissing);
+    // Strip thumbnails use our (BATCH) alignment
+    box.querySelectorAll('[data-human] video').forEach((v, j) => { v.src = task.methodSrc(win, ours, list[j], set); });
+    box.querySelector('[data-ref] video').src = robotSrc(task, win);
+    selectHuman(0);
+  }
+
+  function selectHuman(j) {
+    const task = TASKS[state.task];
+    const win = shown(task)[state.sel];
+    const box = $('[data-role=humans]');
+    const list = compareHumans(task, win), set = compareSet(task);
+    state.human = j;
+    box.querySelectorAll('[data-human]').forEach((el) => el.classList.toggle('on', +el.dataset.human === j));
+    box.querySelectorAll('[data-method]').forEach((cell) => {
+      const m = task.methods[+cell.dataset.method];
+      const v = cell.querySelector('video');
+      v.parentElement.classList.remove('missing');
+      v.src = task.methodSrc(win, m, list[j], set);
+      // Red border + explanation when this method misaligns the demonstration. Notes with `when` (e.g. the human
+      // resetting the cup) are only shown while that part of the video plays; see tick().
+      const key = set ? `${set.key}/${list[j]}` : list[j];
+      const notes = task.failures?.[win.ep]?.[m.suffix]?.[key] || [];
+      // With time ranges, the border follows playback (see updateNotes); otherwise it stays on for the whole video
+      const spans = notes.length ? task.failureSpans?.[win.ep]?.[m.suffix]?.[key] : null;
+      if (spans) cell.dataset.spans = JSON.stringify(spans); else delete cell.dataset.spans;
+      cell.classList.toggle('fail', notes.length > 0 && !spans);
+      cell.querySelector('.ar-fail-note').innerHTML = task.failureNotes === false ? '' : notes.map((n) => {
+        // Bold the failure type at the start of the sentence
+        const html = n.text.replace(/^(Phase mismatch|Contains irrelevant segments):/, '<strong>$1:</strong>');
+        return n.when
+          ? `<span class="ar-fail-line" data-from="${n.when[0]}" data-to="${n.when[1]}" hidden>${html}</span>`
+          : `<span class="ar-fail-line">${html}</span>`;
+      }).join(' ');
+    });
+    // Restart from the beginning so every video starts in step with the robot
+    robots[state.sel].currentTime = 0;
+    humans.forEach((v) => { if (v.src) { v.currentTime = 0; v.play().catch(() => {}); } });
+  }
+
+  // Show time-bound failure notes (e.g. the human resetting the cup) only while their part of the video plays
+  function updateNotes(time) {
+    root.querySelectorAll('.ar-fail-line[data-from]').forEach((el) => {
+      el.hidden = !(time >= +el.dataset.from && time <= +el.dataset.to);
+    });
+    // Red border only while the baseline is out of sync with the robot
+    root.querySelectorAll('.ar-compare [data-spans]').forEach((cell) => {
+      cell.classList.toggle('fail', JSON.parse(cell.dataset.spans).some(([a, b]) => time >= a && time <= b));
+    });
+  }
+
+  // Keep the human videos locked to the selected robot clip
+  (function tick() {
+    const q = robots[state.sel];
+    if (q && q.duration) {
+      humans.forEach((v) => {
+        if (v.src && Math.abs(v.currentTime - q.currentTime) > 0.15) v.currentTime = q.currentTime;
+      });
+      updateNotes(q.currentTime);
+    }
     requestAnimationFrame(tick);
   })();
 
-  // ---- Render the selected example ----
-  function render() {
+  // ---- Select a robot segment: load its matching human videos ----
+  function select(i) {
     const task = TASKS[state.task];
-    const notes = NOTES[task.key]?.[state.n - 1] ?? DEFAULT_NOTES;
+    const wins = shown(task);
+    const win = wins[i];
+    state.sel = i;
 
-    root.querySelectorAll('[data-task]').forEach((b) => b.classList.toggle('on', +b.dataset.task === state.task));
-    $('[data-role=examples]').innerHTML = Array.from({ length: task.count }, (_, i) =>
-      `<button data-n="${i + 1}">${i + 1}</button>`).join('');
-    root.querySelectorAll('[data-n]').forEach((b) => b.classList.toggle('on', +b.dataset.n === state.n));
+    root.querySelectorAll('[data-robot]').forEach((el) => el.classList.toggle('on', +el.dataset.robot === i));
+    // Restart the selected robot clip so it and the human videos start together
+    robots[i].currentTime = 0;
+    robots[i].play().catch(() => {});
 
-    active = COMPOSITES[task.key]?.[state.n] ?? null;
-    if (active) comp.src = active.src; else { comp.pause(); comp.removeAttribute('src'); comp.load(); }
-    videos.forEach((v) => {
-      const fromComposite = !!active && active.panels.includes(v.dataset.who);
+    if (task.methods) {
+      renderCompare(task, win);
+      $('[data-role=caption]').innerHTML =
+        `<strong>${task.name}, ${task.unit || 'segment'} ${i + 1} of ${wins.length}.</strong> ${task.desc} ${task.compareCaption || ''}`;
+      return;
+    }
+
+    const list = humanList(task, win);
+    $('[data-role=humans]').style.gridTemplateColumns = `repeat(${task.humanCols || list.length}, minmax(0, 1fr))`;
+    humanCells(list.length).forEach((cell, k) => {
+      const v = cell.querySelector('video');
       v.parentElement.classList.remove('missing');
-      v.parentElement.classList.toggle('comp', fromComposite);
-      if (fromComposite) { v.pause(); v.removeAttribute('src'); v.load(); }
-      else v.src = videoSrc(task.key, state.n, v.dataset.who);
+      cell.querySelector('[data-role=scene-name]').textContent = list[k].name;
+      // Hide the label row when a video has no name
+      cell.querySelector('.ar-name').style.display = list[k].name ? '' : 'none';
+      v.src = list[k].src;
+      v.play().catch(() => {});
     });
-    root.querySelectorAll('[data-note]').forEach((p) => { p.textContent = notes[p.dataset.note]; });
 
     $('[data-role=caption]').innerHTML =
-      `<strong>${task.name}, example ${state.n}.</strong> ${task.desc} ` +
-      `Given the robot query, each method retrieves its nearest human video. ` +
-      `<span style="color:var(--good)">Green</span> marks the correct behavior; <span style="color:var(--bad)">red</span> marks a wrong retrieval. ` +
-      `All videos play in sync with the query.`;
+      `<strong>${task.name}, ${task.unit || 'segment'} ${i + 1} of ${wins.length}.</strong> ${task.desc}`;
+  }
 
-    playAll();
+  // ---- Render the robot grid for the current task ----
+  function render() {
+    const task = TASKS[state.task];
+    root.querySelectorAll('[data-task]').forEach((b) => b.classList.toggle('on', +b.dataset.task === state.task));
+    // Tasks with a single human video put the robot grid and the human video side by side
+    $('.ar-body').classList.toggle('side', !!task.side);
+    $('[data-role=robot-head]').textContent = task.robotHead || 'Robot segments';
+    $('[data-role=human-head]').textContent = task.humanHead || 'BATCH-retrieved human video';
+    $('[data-role=human-hint]').textContent = task.humanHint || '';
+    // Clear the previous task's human videos (the two modes use different markup)
+    humans.forEach(release);
+    humans = [];
+    $('[data-role=humans]').innerHTML = '';
+    $('[data-role=humans]').classList.remove('compare');
+
+    const wins = shown(task);
+    // Release the previous task's videos first; browsers cap how many media players a page can hold
+    robots.forEach(release);
+    $('[data-role=robots]').innerHTML = wins.map((w, i) => `
+      <div class="ar-robot" data-robot="${i}">
+        ${frame(`segment ${i + 1}`, `<span class="ar-num">${i + 1}</span>`)}
+      </div>`).join('');
+    const cols = task.cols || COLS;
+    const grid = $('[data-role=robots]');
+    grid.style.gridTemplateColumns = `repeat(${cols}, minmax(0, 1fr))`;
+    grid.classList.toggle('zoom', !!task.zoom);
+    grid.style.setProperty('--zoom', task.zoom || 1);
+    if (task.zoom) {
+      // Grow each tile from a point proportional to its grid position so the enlarged tile stays inside the grid
+      const rows = Math.ceil(wins.length / cols);
+      grid.querySelectorAll('[data-robot]').forEach((el, i) => {
+        const c = i % cols, r = Math.floor(i / cols);
+        el.style.transformOrigin = `${cols > 1 ? (c / (cols - 1)) * 100 : 50}% ${rows > 1 ? (r / (rows - 1)) * 100 : 50}%`;
+      });
+    }
+    robots = [...root.querySelectorAll('[data-robot] video')];
+    robots.forEach((v, i) => {
+      watchMissing(v);
+      v.addEventListener('timeupdate', () => { if (i === state.sel) updateNotes(v.currentTime); });
+      v.src = robotSrc(task, wins[i]);
+      v.play().catch(() => {});
+    });
+
+    select(0);
   }
 
   // ---- Events ----
-  root.addEventListener('click', (e) => {
-    const el = e.target.closest('button, [data-act]');
-    if (!el) return;
-
-    if (el.dataset.task) { state.task = +el.dataset.task; state.n = 1; render(); }
-    else if (el.dataset.n) { state.n = +el.dataset.n; render(); }
-    else if (el.dataset.act === 'prev' || el.dataset.act === 'next') {
-      const count = TASKS[state.task].count;
-      state.n = ((state.n - 1 + (el.dataset.act === 'next' ? 1 : -1) + count) % count) + 1;
-      render();
-    }
-    else if (el.dataset.act === 'play') { state.playing = !state.playing; playAll(); }
-    else if (el.dataset.act === 'restart') { seekAll(0); }
-    else if (el.dataset.act === 'seek' && master().duration) {
-      const r = el.getBoundingClientRect();
-      seekAll(Math.min(1, Math.max(0, (e.clientX - r.left) / r.width)) * master().duration);
-    }
+  // Hover selects on desktop; tap/click selects on touch screens
+  $('[data-role=robots]').addEventListener('mouseover', (e) => {
+    const el = e.target.closest('[data-robot]');
+    if (el && +el.dataset.robot !== state.sel) select(+el.dataset.robot);
   });
+
+  $('[data-role=humans]').addEventListener('mouseover', (e) => {
+    const el = e.target.closest('[data-human]');
+    if (el && +el.dataset.human !== state.human) selectHuman(+el.dataset.human);
+  });
+
+  root.addEventListener('click', (e) => {
+    const el = e.target.closest('[data-robot], [data-task], [data-human], [data-set]');
+    if (!el) return;
+    if (el.dataset.set !== undefined) {
+      if (+el.dataset.set !== state.set) {
+        state.set = +el.dataset.set;
+        const task = TASKS[state.task];
+        renderCompare(task, shown(task)[state.sel]);
+      }
+    }
+    else if (el.dataset.task) { state.task = +el.dataset.task; state.set = 0; render(); }
+    else if (el.dataset.human !== undefined) { if (+el.dataset.human !== state.human) selectHuman(+el.dataset.human); }
+    else if (+el.dataset.robot !== state.sel) select(+el.dataset.robot);
+  });
+
+  // Only play the thumbnails while the section is on screen
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => {
+      [...robots, ...humans].forEach((v) => {
+        if (!v.src) return;
+        if (entry.isIntersecting) v.play().catch(() => {}); else v.pause();
+      });
+    }).observe(root);
+  }
 
   render();
 })();

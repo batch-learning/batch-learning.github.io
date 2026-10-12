@@ -1,0 +1,5 @@
+variant   : absolute actions (14-dim = 7 per arm), subsequence DTW
+robot     : cup_on_saucer_robot_lerobot episode 0, whole episode (185 frames at 3x)
+human     : /local/real/liuzeyi/dreamzero/data/cup_on_saucer_human_new_lerobot (all 24 episodes, one alignment each)
+flags     : --dtw-repr action --align-method dtw
+action dim: 14 = 7 per arm [xyz, quat_xyzw]; gripper column dropped per arm
