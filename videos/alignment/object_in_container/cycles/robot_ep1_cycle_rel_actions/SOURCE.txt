@@ -1,0 +1,6 @@
+variant: relative actions (base-frame relative, gripper dropped), subsequence DTW
+robot  : episode 1, one full cycle = frames 960..1314 (355 frames)
+t1   : ood_t2 (3 episodes)  --dtw-repr action --relative-actions --align-method dtw
+t2   : ood_t3 (7 episodes)  --dtw-repr action --relative-actions --align-method dtw
+t3   : ood_t4 (12 episodes)  --dtw-repr action --relative-actions --align-method dtw
+t4   : ood_t5 (4 episodes)  --dtw-repr action --relative-actions --align-method dtw

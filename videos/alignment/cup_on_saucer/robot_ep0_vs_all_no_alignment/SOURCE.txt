@@ -1,0 +1,4 @@
+variant   : no alignment: proportional time mapping across the whole target (--align-method uniform)
+robot     : cup_on_saucer_robot_lerobot episode 0, whole episode (185 frames at 3x)
+human     : /local/real/liuzeyi/dreamzero/data/cup_on_saucer_human_new_lerobot (all 24 episodes, one alignment each)
+flags     : --image-features gtcc --gtcc-ckpt outputs/single-task-setting/V1___GTCC_lerobot/run_20260909_142236/lerobot_egoverse/ckpt/epoch-60.pt --dtw-repr image --align-method uniform

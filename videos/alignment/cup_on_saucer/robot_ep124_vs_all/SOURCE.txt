@@ -1,0 +1,3 @@
+robot     : cup_on_saucer_robot_lerobot episode 124, whole episode (180 frames at 3x subsampling)
+human     : /local/real/liuzeyi/dreamzero/data/cup_on_saucer_human_new_lerobot (all 24 episodes, one alignment each)
+checkpoint: outputs/single-task-setting/V1___GTCC_lerobot/run_20260909_142236/lerobot_egoverse/ckpt/epoch-60.pt

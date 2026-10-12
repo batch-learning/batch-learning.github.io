@@ -1,0 +1,2402 @@
+[
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000000",
+  "query_start": 0,
+  "query_end": 359,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.5743
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000000",
+  "query_start": 142,
+  "query_end": 501,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.4041
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000000",
+  "query_start": 283,
+  "query_end": 642,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.1281
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000000",
+  "query_start": 424,
+  "query_end": 783,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.229
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000000",
+  "query_start": 566,
+  "query_end": 925,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.3657
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000000",
+  "query_start": 708,
+  "query_end": 1067,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.4042
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000000",
+  "query_start": 849,
+  "query_end": 1208,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.8906
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000000",
+  "query_start": 990,
+  "query_end": 1349,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.9106
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000000",
+  "query_start": 1132,
+  "query_end": 1491,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.6514
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000000",
+  "query_start": 1274,
+  "query_end": 1633,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.2936
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000000",
+  "query_start": 1415,
+  "query_end": 1774,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.6122
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000001",
+  "query_start": 0,
+  "query_end": 359,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.2013
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000001",
+  "query_start": 152,
+  "query_end": 511,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.1016
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000001",
+  "query_start": 304,
+  "query_end": 663,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.1522
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000001",
+  "query_start": 456,
+  "query_end": 815,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.693
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000001",
+  "query_start": 608,
+  "query_end": 967,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.6827
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000001",
+  "query_start": 760,
+  "query_end": 1119,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.1715
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000001",
+  "query_start": 912,
+  "query_end": 1271,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.0711
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000001",
+  "query_start": 1063,
+  "query_end": 1422,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.0893
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000001",
+  "query_start": 1215,
+  "query_end": 1574,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.2322
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000001",
+  "query_start": 1367,
+  "query_end": 1726,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.5433
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000001",
+  "query_start": 1519,
+  "query_end": 1878,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.3998
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000001",
+  "query_start": 1671,
+  "query_end": 2030,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.3962
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000001",
+  "query_start": 1823,
+  "query_end": 2182,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.0738
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000002",
+  "query_start": 0,
+  "query_end": 359,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.4773
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000002",
+  "query_start": 131,
+  "query_end": 490,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.831
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000002",
+  "query_start": 262,
+  "query_end": 621,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.7668
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000002",
+  "query_start": 393,
+  "query_end": 752,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.4409
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000002",
+  "query_start": 524,
+  "query_end": 883,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.9585
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000002",
+  "query_start": 655,
+  "query_end": 1014,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.242
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000002",
+  "query_start": 786,
+  "query_end": 1145,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.8882
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000002",
+  "query_start": 917,
+  "query_end": 1276,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.3428
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000002",
+  "query_start": 1048,
+  "query_end": 1407,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.4575
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000002",
+  "query_start": 1179,
+  "query_end": 1538,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.3474
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000003",
+  "query_start": 0,
+  "query_end": 359,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.0073
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000003",
+  "query_start": 149,
+  "query_end": 508,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.5482
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000003",
+  "query_start": 298,
+  "query_end": 657,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.7997
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000003",
+  "query_start": 447,
+  "query_end": 806,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.9732
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000003",
+  "query_start": 596,
+  "query_end": 955,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.2082
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000003",
+  "query_start": 746,
+  "query_end": 1105,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.1477
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000003",
+  "query_start": 895,
+  "query_end": 1254,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.4542
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000003",
+  "query_start": 1044,
+  "query_end": 1403,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.126
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000003",
+  "query_start": 1193,
+  "query_end": 1552,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.2151
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000003",
+  "query_start": 1342,
+  "query_end": 1701,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.4983
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000003",
+  "query_start": 1491,
+  "query_end": 1850,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.1936
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000003",
+  "query_start": 1640,
+  "query_end": 1999,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.2536
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000003",
+  "query_start": 1790,
+  "query_end": 2149,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.5651
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000003",
+  "query_start": 1939,
+  "query_end": 2298,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.0282
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000003",
+  "query_start": 2088,
+  "query_end": 2447,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.2487
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000003",
+  "query_start": 2237,
+  "query_end": 2596,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.5952
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000003",
+  "query_start": 2386,
+  "query_end": 2745,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.4419
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000005",
+  "query_start": 0,
+  "query_end": 359,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.4183
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000005",
+  "query_start": 146,
+  "query_end": 505,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.4939
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000005",
+  "query_start": 293,
+  "query_end": 652,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.5242
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000005",
+  "query_start": 440,
+  "query_end": 799,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.2967
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000005",
+  "query_start": 586,
+  "query_end": 945,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.2111
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000005",
+  "query_start": 732,
+  "query_end": 1091,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.643
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000005",
+  "query_start": 879,
+  "query_end": 1238,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.6477
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000005",
+  "query_start": 1026,
+  "query_end": 1385,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.5756
+ },
+ {
+  "set": "t1",
+  "query_episode": "robot_episode_000005",
+  "query_start": 1172,
+  "query_end": 1531,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.3259
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000000",
+  "query_start": 0,
+  "query_end": 359,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.4088
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000000",
+  "query_start": 142,
+  "query_end": 501,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.706
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000000",
+  "query_start": 283,
+  "query_end": 642,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.3799
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000000",
+  "query_start": 424,
+  "query_end": 783,
+  "human_episode": "human_episode_000006",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.9425
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000000",
+  "query_start": 566,
+  "query_end": 925,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.3453
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000000",
+  "query_start": 708,
+  "query_end": 1067,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.3257
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000000",
+  "query_start": 849,
+  "query_end": 1208,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.0107
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000000",
+  "query_start": 990,
+  "query_end": 1349,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.9207
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000000",
+  "query_start": 1132,
+  "query_end": 1491,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.9007
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000000",
+  "query_start": 1274,
+  "query_end": 1633,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.3198
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000000",
+  "query_start": 1415,
+  "query_end": 1774,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.4634
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000001",
+  "query_start": 0,
+  "query_end": 359,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.1892
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000001",
+  "query_start": 152,
+  "query_end": 511,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.5786
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000001",
+  "query_start": 304,
+  "query_end": 663,
+  "human_episode": "human_episode_000004",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.3393
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000001",
+  "query_start": 456,
+  "query_end": 815,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.8415
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000001",
+  "query_start": 608,
+  "query_end": 967,
+  "human_episode": "human_episode_000005",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.5341
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000001",
+  "query_start": 760,
+  "query_end": 1119,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.5187
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000001",
+  "query_start": 912,
+  "query_end": 1271,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.2433
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000001",
+  "query_start": 1063,
+  "query_end": 1422,
+  "human_episode": "human_episode_000005",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.1151
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000001",
+  "query_start": 1215,
+  "query_end": 1574,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.551
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000001",
+  "query_start": 1367,
+  "query_end": 1726,
+  "human_episode": "human_episode_000006",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.9221
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000001",
+  "query_start": 1519,
+  "query_end": 1878,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.2635
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000001",
+  "query_start": 1671,
+  "query_end": 2030,
+  "human_episode": "human_episode_000006",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.2923
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000001",
+  "query_start": 1823,
+  "query_end": 2182,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.2218
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000002",
+  "query_start": 0,
+  "query_end": 359,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.7358
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000002",
+  "query_start": 131,
+  "query_end": 490,
+  "human_episode": "human_episode_000005",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.5064
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000002",
+  "query_start": 262,
+  "query_end": 621,
+  "human_episode": "human_episode_000006",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.8407
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000002",
+  "query_start": 393,
+  "query_end": 752,
+  "human_episode": "human_episode_000005",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.8027
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000002",
+  "query_start": 524,
+  "query_end": 883,
+  "human_episode": "human_episode_000006",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.8002
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000002",
+  "query_start": 655,
+  "query_end": 1014,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.0291
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000002",
+  "query_start": 786,
+  "query_end": 1145,
+  "human_episode": "human_episode_000006",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.088
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000002",
+  "query_start": 917,
+  "query_end": 1276,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.4718
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000002",
+  "query_start": 1048,
+  "query_end": 1407,
+  "human_episode": "human_episode_000005",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.3402
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000002",
+  "query_start": 1179,
+  "query_end": 1538,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.9492
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000003",
+  "query_start": 0,
+  "query_end": 359,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.3272
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000003",
+  "query_start": 149,
+  "query_end": 508,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.3952
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000003",
+  "query_start": 298,
+  "query_end": 657,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.1771
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000003",
+  "query_start": 447,
+  "query_end": 806,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.9183
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000003",
+  "query_start": 596,
+  "query_end": 955,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.1622
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000003",
+  "query_start": 746,
+  "query_end": 1105,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.3963
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000003",
+  "query_start": 895,
+  "query_end": 1254,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.4298
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000003",
+  "query_start": 1044,
+  "query_end": 1403,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.9508
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000003",
+  "query_start": 1193,
+  "query_end": 1552,
+  "human_episode": "human_episode_000006",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.2429
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000003",
+  "query_start": 1342,
+  "query_end": 1701,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.3955
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000003",
+  "query_start": 1491,
+  "query_end": 1850,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.4411
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000003",
+  "query_start": 1640,
+  "query_end": 1999,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.0886
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000003",
+  "query_start": 1790,
+  "query_end": 2149,
+  "human_episode": "human_episode_000006",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.3058
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000003",
+  "query_start": 1939,
+  "query_end": 2298,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.2977
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000003",
+  "query_start": 2088,
+  "query_end": 2447,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.3619
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000003",
+  "query_start": 2237,
+  "query_end": 2596,
+  "human_episode": "human_episode_000006",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.8826
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000003",
+  "query_start": 2386,
+  "query_end": 2745,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.4657
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000005",
+  "query_start": 0,
+  "query_end": 359,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.9979
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000005",
+  "query_start": 146,
+  "query_end": 505,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.9748
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000005",
+  "query_start": 293,
+  "query_end": 652,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.4535
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000005",
+  "query_start": 440,
+  "query_end": 799,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.7814
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000005",
+  "query_start": 586,
+  "query_end": 945,
+  "human_episode": "human_episode_000006",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.2245
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000005",
+  "query_start": 732,
+  "query_end": 1091,
+  "human_episode": "human_episode_000005",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.9455
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000005",
+  "query_start": 879,
+  "query_end": 1238,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.983
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000005",
+  "query_start": 1026,
+  "query_end": 1385,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.5116
+ },
+ {
+  "set": "t2",
+  "query_episode": "robot_episode_000005",
+  "query_start": 1172,
+  "query_end": 1531,
+  "human_episode": "human_episode_000005",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 1.7286
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000000",
+  "query_start": 0,
+  "query_end": 359,
+  "human_episode": "human_episode_000006",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.4351
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000000",
+  "query_start": 142,
+  "query_end": 501,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.7224
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000000",
+  "query_start": 283,
+  "query_end": 642,
+  "human_episode": "human_episode_000008",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.7315
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000000",
+  "query_start": 424,
+  "query_end": 783,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.6349
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000000",
+  "query_start": 566,
+  "query_end": 925,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.6712
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000000",
+  "query_start": 708,
+  "query_end": 1067,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.6278
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000000",
+  "query_start": 849,
+  "query_end": 1208,
+  "human_episode": "human_episode_000008",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.5896
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000000",
+  "query_start": 990,
+  "query_end": 1349,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.6328
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000000",
+  "query_start": 1132,
+  "query_end": 1491,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.5907
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000000",
+  "query_start": 1274,
+  "query_end": 1633,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.577
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000000",
+  "query_start": 1415,
+  "query_end": 1774,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.751
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000001",
+  "query_start": 0,
+  "query_end": 359,
+  "human_episode": "human_episode_000007",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.5663
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000001",
+  "query_start": 152,
+  "query_end": 511,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.6457
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000001",
+  "query_start": 304,
+  "query_end": 663,
+  "human_episode": "human_episode_000008",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.6265
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000001",
+  "query_start": 456,
+  "query_end": 815,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.6627
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000001",
+  "query_start": 608,
+  "query_end": 967,
+  "human_episode": "human_episode_000006",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.6056
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000001",
+  "query_start": 760,
+  "query_end": 1119,
+  "human_episode": "human_episode_000006",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.5154
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000001",
+  "query_start": 912,
+  "query_end": 1271,
+  "human_episode": "human_episode_000004",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.6563
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000001",
+  "query_start": 1063,
+  "query_end": 1422,
+  "human_episode": "human_episode_000008",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.6085
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000001",
+  "query_start": 1215,
+  "query_end": 1574,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.5864
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000001",
+  "query_start": 1367,
+  "query_end": 1726,
+  "human_episode": "human_episode_000009",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.7455
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000001",
+  "query_start": 1519,
+  "query_end": 1878,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.702
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000001",
+  "query_start": 1671,
+  "query_end": 2030,
+  "human_episode": "human_episode_000004",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.6373
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000001",
+  "query_start": 1823,
+  "query_end": 2182,
+  "human_episode": "human_episode_000008",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.7611
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000002",
+  "query_start": 0,
+  "query_end": 359,
+  "human_episode": "human_episode_000006",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.5334
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000002",
+  "query_start": 131,
+  "query_end": 490,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.7174
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000002",
+  "query_start": 262,
+  "query_end": 621,
+  "human_episode": "human_episode_000008",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.6673
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000002",
+  "query_start": 393,
+  "query_end": 752,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.6719
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000002",
+  "query_start": 524,
+  "query_end": 883,
+  "human_episode": "human_episode_000011",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.6321
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000002",
+  "query_start": 655,
+  "query_end": 1014,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.5546
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000002",
+  "query_start": 786,
+  "query_end": 1145,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.4533
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000002",
+  "query_start": 917,
+  "query_end": 1276,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.5754
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000002",
+  "query_start": 1048,
+  "query_end": 1407,
+  "human_episode": "human_episode_000004",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.6395
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000002",
+  "query_start": 1179,
+  "query_end": 1538,
+  "human_episode": "human_episode_000004",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.5113
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000003",
+  "query_start": 0,
+  "query_end": 359,
+  "human_episode": "human_episode_000006",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.4477
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000003",
+  "query_start": 149,
+  "query_end": 508,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.5053
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000003",
+  "query_start": 298,
+  "query_end": 657,
+  "human_episode": "human_episode_000004",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.6047
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000003",
+  "query_start": 447,
+  "query_end": 806,
+  "human_episode": "human_episode_000009",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.5166
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000003",
+  "query_start": 596,
+  "query_end": 955,
+  "human_episode": "human_episode_000006",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.5194
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000003",
+  "query_start": 746,
+  "query_end": 1105,
+  "human_episode": "human_episode_000007",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.5509
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000003",
+  "query_start": 895,
+  "query_end": 1254,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.5689
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000003",
+  "query_start": 1044,
+  "query_end": 1403,
+  "human_episode": "human_episode_000008",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.4723
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000003",
+  "query_start": 1193,
+  "query_end": 1552,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.6543
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000003",
+  "query_start": 1342,
+  "query_end": 1701,
+  "human_episode": "human_episode_000004",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.7042
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000003",
+  "query_start": 1491,
+  "query_end": 1850,
+  "human_episode": "human_episode_000006",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.5403
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000003",
+  "query_start": 1640,
+  "query_end": 1999,
+  "human_episode": "human_episode_000004",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.6599
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000003",
+  "query_start": 1790,
+  "query_end": 2149,
+  "human_episode": "human_episode_000008",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.698
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000003",
+  "query_start": 1939,
+  "query_end": 2298,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.5497
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000003",
+  "query_start": 2088,
+  "query_end": 2447,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.6483
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000003",
+  "query_start": 2237,
+  "query_end": 2596,
+  "human_episode": "human_episode_000006",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.5429
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000003",
+  "query_start": 2386,
+  "query_end": 2745,
+  "human_episode": "human_episode_000010",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.5309
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000005",
+  "query_start": 0,
+  "query_end": 359,
+  "human_episode": "human_episode_000006",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.5222
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000005",
+  "query_start": 146,
+  "query_end": 505,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.5191
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000005",
+  "query_start": 293,
+  "query_end": 652,
+  "human_episode": "human_episode_000008",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.7248
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000005",
+  "query_start": 440,
+  "query_end": 799,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.7003
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000005",
+  "query_start": 586,
+  "query_end": 945,
+  "human_episode": "human_episode_000006",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.6378
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000005",
+  "query_start": 732,
+  "query_end": 1091,
+  "human_episode": "human_episode_000008",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.6396
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000005",
+  "query_start": 879,
+  "query_end": 1238,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.5485
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000005",
+  "query_start": 1026,
+  "query_end": 1385,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.5739
+ },
+ {
+  "set": "t3",
+  "query_episode": "robot_episode_000005",
+  "query_start": 1172,
+  "query_end": 1531,
+  "human_episode": "human_episode_000004",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 0.4942
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000000",
+  "query_start": 0,
+  "query_end": 359,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 3.0424
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000000",
+  "query_start": 142,
+  "query_end": 501,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 3.6183
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000000",
+  "query_start": 283,
+  "query_end": 642,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 3.2688
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000000",
+  "query_start": 424,
+  "query_end": 783,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 3.0578
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000000",
+  "query_start": 566,
+  "query_end": 925,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.5141
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000000",
+  "query_start": 708,
+  "query_end": 1067,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 3.4823
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000000",
+  "query_start": 849,
+  "query_end": 1208,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.6584
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000000",
+  "query_start": 990,
+  "query_end": 1349,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.6056
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000000",
+  "query_start": 1132,
+  "query_end": 1491,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.811
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000000",
+  "query_start": 1274,
+  "query_end": 1633,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.8956
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000000",
+  "query_start": 1415,
+  "query_end": 1774,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 3.4496
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000001",
+  "query_start": 0,
+  "query_end": 359,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 3.5638
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000001",
+  "query_start": 152,
+  "query_end": 511,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 3.0402
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000001",
+  "query_start": 304,
+  "query_end": 663,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.7244
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000001",
+  "query_start": 456,
+  "query_end": 815,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.9196
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000001",
+  "query_start": 608,
+  "query_end": 967,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.4414
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000001",
+  "query_start": 760,
+  "query_end": 1119,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.7539
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000001",
+  "query_start": 912,
+  "query_end": 1271,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.6986
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000001",
+  "query_start": 1063,
+  "query_end": 1422,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.4347
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000001",
+  "query_start": 1215,
+  "query_end": 1574,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.8596
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000001",
+  "query_start": 1367,
+  "query_end": 1726,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.4972
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000001",
+  "query_start": 1519,
+  "query_end": 1878,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 3.3559
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000001",
+  "query_start": 1671,
+  "query_end": 2030,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 3.0042
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000001",
+  "query_start": 1823,
+  "query_end": 2182,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 3.1761
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000002",
+  "query_start": 0,
+  "query_end": 359,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.724
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000002",
+  "query_start": 131,
+  "query_end": 490,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.7503
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000002",
+  "query_start": 262,
+  "query_end": 621,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.2442
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000002",
+  "query_start": 393,
+  "query_end": 752,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.8767
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000002",
+  "query_start": 524,
+  "query_end": 883,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.4929
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000002",
+  "query_start": 655,
+  "query_end": 1014,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.8751
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000002",
+  "query_start": 786,
+  "query_end": 1145,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.2896
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000002",
+  "query_start": 917,
+  "query_end": 1276,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.5343
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000002",
+  "query_start": 1048,
+  "query_end": 1407,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.3523
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000002",
+  "query_start": 1179,
+  "query_end": 1538,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.5157
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000003",
+  "query_start": 0,
+  "query_end": 359,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 3.4257
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000003",
+  "query_start": 149,
+  "query_end": 508,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 3.0132
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000003",
+  "query_start": 298,
+  "query_end": 657,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.8216
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000003",
+  "query_start": 447,
+  "query_end": 806,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 3.1619
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000003",
+  "query_start": 596,
+  "query_end": 955,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 3.1245
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000003",
+  "query_start": 746,
+  "query_end": 1105,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 3.0204
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000003",
+  "query_start": 895,
+  "query_end": 1254,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 3.2007
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000003",
+  "query_start": 1044,
+  "query_end": 1403,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.7459
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000003",
+  "query_start": 1193,
+  "query_end": 1552,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.9682
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000003",
+  "query_start": 1342,
+  "query_end": 1701,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.8279
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000003",
+  "query_start": 1491,
+  "query_end": 1850,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.6122
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000003",
+  "query_start": 1640,
+  "query_end": 1999,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.4419
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000003",
+  "query_start": 1790,
+  "query_end": 2149,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.7267
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000003",
+  "query_start": 1939,
+  "query_end": 2298,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.96
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000003",
+  "query_start": 2088,
+  "query_end": 2447,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.9111
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000003",
+  "query_start": 2237,
+  "query_end": 2596,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.7772
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000003",
+  "query_start": 2386,
+  "query_end": 2745,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 3.0931
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000005",
+  "query_start": 0,
+  "query_end": 359,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 3.488
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000005",
+  "query_start": 146,
+  "query_end": 505,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.7803
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000005",
+  "query_start": 293,
+  "query_end": 652,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.6859
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000005",
+  "query_start": 440,
+  "query_end": 799,
+  "human_episode": "human_episode_000002",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.8903
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000005",
+  "query_start": 586,
+  "query_end": 945,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.5591
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000005",
+  "query_start": 732,
+  "query_end": 1091,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.5904
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000005",
+  "query_start": 879,
+  "query_end": 1238,
+  "human_episode": "human_episode_000003",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.8541
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000005",
+  "query_start": 1026,
+  "query_end": 1385,
+  "human_episode": "human_episode_000001",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.5939
+ },
+ {
+  "set": "t4",
+  "query_episode": "robot_episode_000005",
+  "query_start": 1172,
+  "query_end": 1531,
+  "human_episode": "human_episode_000000",
+  "human_start": 0,
+  "human_end": 499,
+  "dtw_cost": 2.5153
+ }
+]

@@ -1,0 +1,4 @@
+variant   : DINOv3 ViT-S/16 cls-token features, subsequence DTW
+robot     : cup_on_saucer_robot_lerobot episode 124, whole episode (180 frames at 3x)
+human     : /local/real/liuzeyi/dreamzero/data/cup_on_saucer_human_new_lerobot (all 24 episodes, one alignment each)
+flags     : --image-features dinov3_cls --dtw-repr image --align-method dtw

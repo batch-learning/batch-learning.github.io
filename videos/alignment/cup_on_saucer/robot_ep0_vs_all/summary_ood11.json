@@ -1,0 +1,21 @@
+[
+  {
+    "query": "cuprobot_episode_000000",
+    "best_target": "cuphnew_episode_000011",
+    "best_target_chunk": "cuphnew_episode_000011",
+    "target_chunk_range": [
+      0,
+      154
+    ],
+    "dtw_norm_cost": 2.2038362497504442,
+    "repr": "image",
+    "metric": "l2",
+    "query_window": [
+      0,
+      184
+    ],
+    "query_len": 185,
+    "target_len": 155,
+    "video": "/tmp/claude-410033/-local-real-liuzeyi-dreamzero/f1f47972-1e2b-438c-9ea5-7d6974e9126a/scratchpad/strips_ep0/cuprobot_episode_000000__w0-184__dtw_image_l2__to__cuphnew_episode_000011.mp4"
+  }
+]
