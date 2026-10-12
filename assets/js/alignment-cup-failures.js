@@ -1,10 +1,7 @@
 // Cup on Saucer alignment failures of the baselines, shown under misaligned videos in the Alignment Results section.
 // CUP_ALIGNMENT_FAILURES[robot episode][method folder suffix][human episode] = list of notes { text, when? }.
 // A note with `when` = [start, end] (seconds) is only shown while that part of the video plays.
-<<<<<<< HEAD
 // Current page selections were reviewed with synchronized frames; see docs/cup-on-saucer-annotation-audit.md.
-=======
->>>>>>> 6bcc1f6eb5dbfe53106c4fa1daf90078a998f5ec
 // Generated from task phases annotated by eye on every robot episode and human recording (reach, lift, hand over,
 // place, done, plus the human resetting the cup). A video is listed when, for at least 2 s or 30% of it, the human is
 // resetting the cup or is in a different task phase than the robot (Phase mismatch).
@@ -873,14 +870,11 @@ window.CUP_ALIGNMENT_FAILURES = {
         {
           "text": "Phase mismatch: human handing over, robot placing."
         }
-<<<<<<< HEAD
       ],
       "20": [
         {
           "text": "Phase mismatch: human handing over, robot placing."
         }
-=======
->>>>>>> 6bcc1f6eb5dbfe53106c4fa1daf90078a998f5ec
       ]
     },
     "_no_alignment": {
@@ -1104,12 +1098,8 @@ window.CUP_ALIGNMENT_FAILURES = {
   }
 };
 
-<<<<<<< HEAD
 // Legacy approximate time ranges (seconds). The Cup task does not wire these into task.failureSpans,
 // so its red borders flag whole clips. Timed reset notes use their own `when` ranges; boundaries are approximate.
-=======
-// Out-of-sync time ranges (seconds) of each flagged baseline video; its red border is shown only during them.
->>>>>>> 6bcc1f6eb5dbfe53106c4fa1daf90078a998f5ec
 window.CUP_ALIGNMENT_SPANS = {
   "0": {
     "_dinov3": {
