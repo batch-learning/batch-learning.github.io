@@ -166,6 +166,56 @@
 #alignment .ar-compare .ours .ar-name { color: var(--accent); }
 #alignment .ar-compare .fail .ar-frame { --ring: #d0453b; --ring-w: 3px; }
 
+/* Shared playback: play/pause + scrubber for the robot clip and every aligned video */
+#alignment .ar-ctrl {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  margin-top: 0.6em;
+}
+
+#alignment .ar-play {
+  width: 2.2em;
+  height: 2.2em;
+  flex: none;
+  border-radius: 50%;
+  background: #333;
+  color: #fff;
+  font-size: 0.75em;
+  line-height: 2.2em;
+}
+
+#alignment .ar-seek {
+  position: relative;
+  flex: 1;
+  height: 16px;
+  cursor: pointer;
+  touch-action: none;
+}
+
+#alignment .ar-seek::before,
+#alignment .ar-seek-fill {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 6px;
+  margin-top: -3px;
+  border-radius: 3px;
+}
+
+#alignment .ar-seek::before { right: 0; background: #e6e6e6; }
+#alignment .ar-seek-fill { width: 0; background: var(--accent); }
+
+#alignment .ar-time {
+  flex: none;
+  min-width: 7.5em;
+  text-align: right;
+  font-family: monospace;
+  font-size: 0.75em;
+  color: #555;
+}
+
 #alignment .ar-fail-note {
   margin: 0.15em 0 0;
   font-size: 0.8em;

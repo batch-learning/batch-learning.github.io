@@ -137,7 +137,7 @@
   if (!root) return;
 
   const $ = (sel) => root.querySelector(sel);
-  const state = { task: 0, sel: 0, human: 0, set: 0 };
+  const state = { task: 0, sel: 0, human: 0, set: 0, paused: false };
   // Comparison mode: the human demonstrations of the selected robot clip (from the selected scene, if any)
   const compareSet = (task) => (task.humanSets ? task.humanSets[state.set] : null);
   const compareHumans = (task, win) => {
@@ -212,6 +212,11 @@
             <div class="ar-name">${m.name}</div>${frame(m.name)}
             <p class="ar-fail-note"></p>
           </div>`).join('')}
+      </div>
+      <div class="ar-ctrl">
+        <button class="ar-play" data-act="ar-play" title="Play / pause all videos"></button>
+        <div class="ar-seek" title="Drag to scrub all videos"><div class="ar-seek-fill"></div></div>
+        <span class="ar-time"></span>
       </div>`;
     humans = [...box.querySelectorAll('video')];
     humans.forEach(watchMissing);
@@ -252,6 +257,23 @@
     // Restart from the beginning so every video starts in step with the robot
     robots[state.sel].currentTime = 0;
     humans.forEach((v) => { if (v.src) { v.currentTime = 0; v.play().catch(() => {}); } });
+    setPaused(false);
+  }
+
+  // ---- Shared playback: one play/pause + scrubber drives the selected robot clip and every video aligned to it ----
+  const synced = () => [robots[state.sel], ...humans].filter((v) => v && v.src);
+  function setPaused(p) {
+    state.paused = p;
+    synced().forEach((v) => (p ? v.pause() : v.play().catch(() => {})));
+    const btn = root.querySelector('[data-act=ar-play]');
+    if (btn) btn.innerHTML = p ? '&#9654;' : '&#10074;&#10074;';
+  }
+  function scrub(e) {
+    const q = robots[state.sel], bar = e.currentTarget;
+    if (!q || !q.duration) return;
+    const r = bar.getBoundingClientRect();
+    const t = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width)) * q.duration;
+    synced().forEach((v) => { v.currentTime = t; });
   }
 
   // Show time-bound failure notes (e.g. the human resetting the cup) only while their part of the video plays
@@ -269,10 +291,15 @@
   (function tick() {
     const q = robots[state.sel];
     if (q && q.duration) {
+      // While paused, follow the robot closely so a scrubbed frame lines up exactly
+      const tol = state.paused ? 0.03 : 0.15;
       humans.forEach((v) => {
-        if (v.src && Math.abs(v.currentTime - q.currentTime) > 0.15) v.currentTime = q.currentTime;
+        if (v.src && Math.abs(v.currentTime - q.currentTime) > tol) v.currentTime = q.currentTime;
       });
       updateNotes(q.currentTime);
+      const fill = root.querySelector('.ar-seek-fill'), time = root.querySelector('.ar-time');
+      if (fill) fill.style.width = `${(q.currentTime / q.duration) * 100}%`;
+      if (time) time.textContent = `${q.currentTime.toFixed(1)} s / ${q.duration.toFixed(1)} s`;
     }
     requestAnimationFrame(tick);
   })();
@@ -371,6 +398,7 @@
   });
 
   root.addEventListener('click', (e) => {
+    if (e.target.closest('[data-act=ar-play]')) { setPaused(!state.paused); return; }
     const el = e.target.closest('[data-robot], [data-task], [data-human], [data-set]');
     if (!el) return;
     if (el.dataset.set !== undefined) {
@@ -385,12 +413,25 @@
     else if (+el.dataset.robot !== state.sel) select(+el.dataset.robot);
   });
 
+  root.addEventListener('pointerdown', (e) => {
+    const bar = e.target.closest('.ar-seek');
+    if (!bar) return;
+    bar.setPointerCapture(e.pointerId);
+    if (!state.paused) setPaused(true);   // hold the frame while scrubbing; press play to continue
+    scrub({ currentTarget: bar, clientX: e.clientX });
+  });
+  root.addEventListener('pointermove', (e) => {
+    const bar = e.target.closest('.ar-seek');
+    if (bar && bar.hasPointerCapture(e.pointerId)) scrub({ currentTarget: bar, clientX: e.clientX });
+  });
+
   // Only play the thumbnails while the section is on screen
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(([entry]) => {
+      const held = state.paused ? synced() : [];
       [...robots, ...humans].forEach((v) => {
         if (!v.src) return;
-        if (entry.isIntersecting) v.play().catch(() => {}); else v.pause();
+        if (entry.isIntersecting && !held.includes(v)) v.play().catch(() => {}); else if (!entry.isIntersecting) v.pause();
       });
     }).observe(root);
   }
