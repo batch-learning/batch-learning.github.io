@@ -21,7 +21,7 @@
   const STEPS = [
     { name: 'Encode',                start: 0,    text: 'A shared GTCC encoder φ embeds every frame of an unaligned human demo (v₁:M) and robot demo (u₁:N).' },
     { name: 'Soft nearest neighbors', start: 3.5,  text: 'A robot frame uᵢ attends to all human frames with weights αᵢⱼ. Since a task can revisit similar states, a Gaussian mixture over αᵢ keeps several hypotheses, giving multiple soft nearest neighbors ṽᵢₖ.' },
-    { name: 'Cycle consistency',     start: 7,    text: 'Each ṽᵢₖ is mapped back onto the robot sequence, giving a cycle-back distribution with mean μ̂ᵢₖ and spread σ̂ᵢₖ. A hypothesis that lands sharply on frame i has low loss; one that misses, or is uncertain, has high loss. A relevance weight bᵢ down-weights frames with no counterpart.' },
+    { name: 'Cycle consistency',     start: 7,    text: 'Each ṽᵢₖ is mapped back onto the robot sequence, giving a cycle-back distribution with mean μ̂ᵢₖ and spread σ̂ᵢₖ. A hypothesis that lands sharply on frame i has low loss; one that misses, or is uncertain, has high loss. A relevance weight predicted for each frame (bⱼ for human frame j) down-weights frames with no counterpart, such as the human resetting the cup.' },
     { name: 'DTW matching',          start: 11,   text: 'Subsequence DTW traces the minimum-cost monotonic path through the frame-to-frame cost matrix in the learned embedding space. Each step of the path links a robot frame to a human frame.' },
     { name: 'Aligned demos',         start: 15,   text: '' },
   ];
@@ -189,8 +189,8 @@
           ${txt(DX, DY - 14, 'DTW cost matrix', `fill="${C.ink}" font-size="15"`)}
           ${dtwMatrix}${dtwPath}
           <rect data-pcur x="0" y="0" width="${DC + 3}" height="${DC + 3}" rx="2" fill="none" stroke="${C.ink}" stroke-width="2" opacity="0"/>
-          ${txt(DX + (ROBOT.length * DC) / 2, DY + HUMAN.length * DC + 18, 'robot frames →', `text-anchor="middle" fill="${C.r}" font-size="13"`)}
-          <text x="${DX - 8}" y="${DY + (HUMAN.length * DC) / 2}" font-size="13" fill="${C.h}" text-anchor="middle" transform="rotate(-90 ${DX - 8} ${DY + (HUMAN.length * DC) / 2})">human frames →</text>
+          ${txt(DX + (ROBOT.length * DC) / 2, DY + HUMAN.length * DC + 18, 'robot frames →', `text-anchor="middle" fill="${C.r}" font-size="14"`)}
+          <text x="${DX - 8}" y="${DY + (HUMAN.length * DC) / 2}" font-size="14" fill="${C.h}" text-anchor="middle" transform="rotate(-90 ${DX - 8} ${DY + (HUMAN.length * DC) / 2})">human frames →</text>
         </g>
         <rect data-cur="h" width="${CW + 8}" height="${CW + 8}" rx="6" fill="none" stroke="${C.ink}" stroke-width="2.5" opacity="0"/>
         <rect data-cur="r" width="${CW + 8}" height="${CW + 8}" rx="6" fill="none" stroke="${C.ink}" stroke-width="2.5" opacity="0"/>

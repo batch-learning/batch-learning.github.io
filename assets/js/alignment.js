@@ -33,18 +33,18 @@
     {
       key: 'object_in_container',
       name: 'Object in Container',
-      desc: 'The robot picks up a toy, put it in bowl, flip the bowl to dump toy, place the bowl on table, and repeat the above cycle.',
+      desc: 'The robot picks up a toy, puts it in the bowl, flips the bowl to dump the toy, places the bowl on the table, and repeats the cycle.',
       // One full cycle of each robot episode is aligned to every human demonstration of the four human scenes, once
       // per method (folder suffix):
       //   videos/alignment/object_in_container/cycles/robot_ep<ep>_cycle<suffix>/robot/robot_episode_<ep>__cycle_w<window>.mp4
       //   videos/alignment/object_in_container/cycles/robot_ep<ep>_cycle<suffix>/human/<scene>/human_episode_<h>.mp4
       robotSrc: (w) => `videos/alignment/object_in_container/cycles/robot_ep${w.ep}_cycle/robot/robot_episode_${pad(w.ep)}__cycle_w${w.w}.mp4`,
       methods: [
-        { suffix: '', name: 'BATCH (Ours)', ours: true },
+        { suffix: '', name: 'BATCH (GTCC + DTW)', ours: true },
         { suffix: '_dinov3', name: 'DINOv3 + DTW' },
         // these files are named human_episode_<h>#c0.mp4; '#' must be URL-encoded or the browser drops the rest
         { suffix: '_rel_actions', name: 'Action DTW', file: '%23c0' },
-        { suffix: '_no_alignment', name: 'No alignment' },
+        { suffix: '_no_alignment', name: 'Proportional mapping' },
       ],
       methodSrc: (w, m, h, set) =>
         `videos/alignment/object_in_container/cycles/robot_ep${w.ep}_cycle${m.suffix}/human/${set.key}/human_episode_${pad(h)}${m.file || ''}.mp4`,
@@ -59,7 +59,7 @@
       compareCaption: 'For each human scene we show the demonstration BATCH aligns ' +
         'best to the robot (lowest alignment cost), next to the same demonstration aligned by the baselines: ' +
         'DINOv3 + DTW uses pretrained DINOv3 image features, Action DTW uses relative end-effector actions, and ' +
-        'No alignment stretches the human video uniformly. All videos play in sync with the robot.',
+        'Proportional mapping stretches the human video uniformly. All videos play in sync with the robot.',
       unit: 'robot episode',
       robotHead: 'Robot episodes',
       humanHead: 'Most aligned human demonstration per scene',
@@ -79,24 +79,24 @@
     {
       key: 'cup_on_saucer',
       name: 'Cup on Saucer',
-      desc: 'The robot picks up cup from the handle, hand over from one arm to another, and places the cup on saucer.',
+      desc: 'The robot picks up the cup by the handle, hands it over from one arm to the other, and places it on the saucer.',
       // Each full robot episode is aligned to every out-of-domain human episode in which the cup starts on the
       // same side of the saucer, once per method (folder suffix):
       //   videos/alignment/cup_on_saucer/robot_ep<ep>_vs_all<suffix>/robot/cuprobot_episode_<ep>__full.mp4
       //   videos/alignment/cup_on_saucer/robot_ep<ep>_vs_all<suffix>/human/cuphnew_episode_<h>.mp4
       robotSrc: (w) => `videos/alignment/cup_on_saucer/robot_ep${w.ep}_vs_all/robot/cuprobot_episode_${pad(w.ep)}__full.mp4`,
       methods: [
-        { suffix: '', name: 'BATCH (Ours)', ours: true },
+        { suffix: '', name: 'BATCH (GTCC + abs. actions + DTW)', ours: true },
         { suffix: '_dinov3', name: 'DINOv3 + DTW' },
         { suffix: '_abs_actions', name: 'Action DTW' },
-        { suffix: '_no_alignment', name: 'No alignment' },
+        { suffix: '_no_alignment', name: 'Proportional mapping' },
       ],
       methodSrc: (w, m, h) => `videos/alignment/cup_on_saucer/robot_ep${w.ep}_vs_all${m.suffix}/human/cuphnew_episode_${pad(h)}.mp4`,
       // Generated in assets/js/alignment-cup-failures.js
       failures: window.CUP_ALIGNMENT_FAILURES || {},
-      compareCaption: 'The demonstrations above are aligned to the robot by BATCH. Below we show aligned demonstration selected by baselines: ' +
+      compareCaption: 'The demonstrations above are aligned to the robot by BATCH. Below we show the aligned demonstrations selected by the baselines: ' +
         'DINOv3 + DTW uses pretrained DINOv3 image features, Action DTW uses absolute end-effector poses, and ' +
-        'No alignment stretches the human video uniformly. All videos play in sync with the robot.',
+        'Proportional mapping stretches the human video uniformly. All videos play in sync with the robot.',
       unit: 'robot episode',
       robotHead: 'Robot episodes',
       humanHead: 'BATCH-retrieved human demonstrations',

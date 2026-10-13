@@ -6,10 +6,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=1000">
   <link rel="stylesheet" href="assets/css/main.css?v=605f7baf" />
-  <link rel="stylesheet" href="assets/css/alignment.css?v=13ad1141" />
-  <link rel="stylesheet" href="assets/css/motivation.css?v=5cdc9fef" />
-  <!-- <link rel="stylesheet" href="assets/css/policy.css?v=9cabf235" /> -->
-  <link rel="stylesheet" href="assets/css/method.css?v=e295df32" />
+  <link rel="stylesheet" href="assets/css/alignment.css?v=b388bc48" />
+  <link rel="stylesheet" href="assets/css/motivation.css?v=65a059db" />
+  <link rel="stylesheet" href="assets/css/policy.css?v=b1f49bc3" />
+  <link rel="stylesheet" href="assets/css/method.css?v=8c4ddd09" />
   <link rel="icon" href="images/favicon.svg">
 
   <meta property="og:type" content="website" />
@@ -33,7 +33,7 @@
 
     .caption {
       color: #555;
-      font-size: 0.8em;
+      font-size: 0.9em;
       line-height: 1.6em;
       text-align: left;
       margin-top: 0.75em;
@@ -45,7 +45,7 @@
 
   <!-- Main -->
   <div id="main"
-    style="padding-bottom:2em; padding-top: 5em; width: 60em; max-width: 70em; margin-left: auto; margin-right: auto;">
+    style="padding-bottom:2em; padding-top: 5em; width: 100%; max-width: 72em; margin-left: auto; margin-right: auto;">
 
     <section id="paper">
 
@@ -110,7 +110,7 @@
           than the robot and includes an extra segment to reset the cup that has no counterpart in the robot trajectory.
           Prior co-training approaches typically sample human and robot trajectories independently, so paired clips may
           correspond to different stages of the task—for example, the human may be grasping the cup while the robot is
-          placing it on saucer. BATCH instead performs behavior alignment, identifying frame-level correspondences between
+          placing it on the saucer. BATCH instead performs behavior alignment, identifying frame-level correspondences between
           equivalent stages of task execution across embodiments.
         </p>
         <div class="mv-modes">
@@ -204,7 +204,7 @@
         <p class="caption" data-role="caption"></p>
       </div>
 
-      <!-- Policy Results temporarily hidden (styles: assets/css/policy.css, logic + config: assets/js/policy.js)
+      <!-- Policy Results (styles: assets/css/policy.css, logic + config: assets/js/policy.js) -->
       <hr>
 
       <div id="policy">
@@ -219,29 +219,31 @@
         <div class="pr-charts" data-role="charts"></div>
         <div class="pr-bar-ctrl">
           <div class="pr-seg" data-role="r-tasks"></div>
-          <div class="pr-seg small" data-role="r-settings"></div>
         </div>
         <div class="pr-grid" data-role="r-grid"></div>
+        <div class="pr-fail" data-role="r-fail" hidden>
+          <h4>Baseline failure cases</h4>
+          <div class="pr-grid" data-role="r-fail-grid"></div>
+        </div>
         <p class="caption">
-          <strong>Real-world rollouts in unseen configurations.</strong> <em>OURS w/o alignment</em> randomly samples
+          <strong data-role="r-title">BATCH rollouts</strong> (played at <span data-role="r-speed">4×</span>). In the charts, <em>BATCH w/o alignment</em> randomly samples
           human and robot trajectories instead of using behavior-aligned pairs; <em>EgoVerse</em> co-trains on human and
-          robot data without the cross-embodiment style-transfer objective; <em>OURS w/ OT</em> replaces style transfer
+          robot data without the cross-embodiment style-transfer objective; <em>BATCH w/ OT</em> replaces style transfer
           with an optimal-transport loss on observation tokens; <em>Robot Only</em> uses no human data.
         </p>
       </div>
-      -->
 
     </section>
 
   </div>
 
-  <script src="assets/js/motivation.js?v=82925175"></script>
+  <script src="assets/js/motivation.js?v=a1d1de53"></script>
   <script src="assets/js/alignment-cup-failures.js?v=22166b88"></script>
   <script src="assets/js/alignment-oic-failures.js?v=5d77318f"></script>
-  <script src="assets/js/alignment.js?v=3731cbd3"></script>
-  <!-- <script src="assets/js/policy.js?v=8834a5b7"></script> -->
-  <script src="assets/js/alignment-anim.js?v=ce6896d2"></script>
-  <script src="assets/js/vam-anim.js?v=dc18a3d8"></script>
+  <script src="assets/js/alignment.js?v=7f0c45d4"></script>
+  <script src="assets/js/policy.js?v=3edcb216"></script>
+  <script src="assets/js/alignment-anim.js?v=22e76905"></script>
+  <script src="assets/js/vam-anim.js?v=0b10cd92"></script>
 </body>
 
 </html>

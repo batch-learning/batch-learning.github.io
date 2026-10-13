@@ -65,7 +65,7 @@
   justify-content: space-between;
   align-items: baseline;
   gap: 1em;
-  font-size: 0.8em;
+  font-size: 0.88em;
   line-height: 1.4em;
   color: black;
 }
@@ -81,6 +81,10 @@
 }
 
 #motivation .mv-frame video { display: block; width: 100%; height: 100%; object-fit: cover; }
+/* the head-camera footage is dim; same brightening as the Alignment Results videos. The human clip is already
+   brighter (avg. luma ~98 vs ~79 for the robot) and washes out at 1.4, so it gets a gentler boost. */
+#motivation .mv-frame video { filter: brightness(1.4) contrast(1.05) saturate(1.15); }
+#motivation .mv-frame video[data-who=human] { filter: brightness(1.1) contrast(1.05) saturate(1.1); }
 #motivation .mv-frame video::-webkit-media-controls { display: none !important; }
 
 #motivation .mv-frame.missing { background: repeating-linear-gradient(135deg, #f4f4f4 0 10px, #ececec 10px 20px); }
@@ -107,8 +111,8 @@
   background: rgba(0, 0, 0, 0.6);
   color: #fff;
   font-family: monospace;
-  font-size: 11px;
-  line-height: 16px;
+  font-size: 13px;
+  line-height: 18px;
 }
 
 #motivation .mv-phase {
@@ -118,8 +122,8 @@
   padding: 2px 8px;
   border-radius: 4px;
   color: #fff;
-  font-size: 11px;
-  line-height: 16px;
+  font-size: 13px;
+  line-height: 18px;
 }
 
 /* ---- Timelines ---- */
@@ -130,7 +134,7 @@
   align-items: center;
 }
 
-#motivation .mv-label { font-size: 0.75em; line-height: 1.3em; color: #333; }
+#motivation .mv-label { font-size: 0.85em; line-height: 1.3em; color: #333; }
 
 #motivation .mv-track {
   position: relative;
@@ -148,7 +152,7 @@
   align-items: center;
   justify-content: center;
   border-right: solid 2px #fff;
-  font-size: 0.6em;
+  font-size: 0.65em;
   line-height: 1;
   white-space: nowrap;
   color: #fff;
@@ -187,7 +191,7 @@
   top: 0;
   transform: translateX(-50%);
   font-family: monospace;
-  font-size: 10px;
+  font-size: 12px;
   color: #a2a2a2;
 }
 
@@ -196,7 +200,7 @@
   flex-wrap: wrap;
   gap: 0.4em 1.25em;
   margin-top: 0.5em;
-  font-size: 0.7em;
+  font-size: 0.85em;
   line-height: 1.4em;
   color: #555;
 }
@@ -212,7 +216,7 @@
 
 /* ---- Segment pairing (prior work vs BATCH) ---- */
 #motivation .mv-modes { display: flex; flex-direction: column; align-items: flex-start; gap: 0.5em; margin-bottom: 1.25em; }
-#motivation .mv-mode-note { margin: 0; font-size: 0.8em; line-height: 1.5em; color: #555; }
+#motivation .mv-mode-note { margin: 0; font-size: 0.9em; line-height: 1.5em; color: #555; }
 
 #motivation .mv-win {
   display: none;
@@ -241,7 +245,7 @@
   position: absolute;
   top: 50%;
   padding: 0;
-  font-size: 0.7em;
+  font-size: 0.75em;
   line-height: 1.5em;
   white-space: nowrap;
   pointer-events: none;

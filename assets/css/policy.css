@@ -22,14 +22,14 @@
 
 #policy .pr-chart h4 {
   margin: 0 0 0.15em;
-  font-size: 0.9em;
+  font-size: 1em;
   line-height: 1.4em;
   color: black;
 }
 
 #policy .pr-metric {
   margin: 0 0 0.75em;
-  font-size: 0.7em;
+  font-size: 0.75em;
   line-height: 1.4em;
   color: #888;
 }
@@ -43,7 +43,7 @@
 }
 
 #policy .pr-name {
-  font-size: 0.75em;
+  font-size: 0.8em;
   line-height: 1.3em;
   color: #555;
   text-align: right;
@@ -76,7 +76,7 @@
   top: 50%;
   transform: translateY(-50%);
   margin-left: 0.4em;
-  font-size: 0.7em;
+  font-size: 0.75em;
   line-height: 1;
   color: #333;
   white-space: nowrap;
@@ -130,18 +130,50 @@
 
 #policy .pr-grid {
   display: grid;
-  grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr));
   gap: 0.9em 0.75em;
-  align-items: stretch;
 }
 
-/* OURS large on the left (spans both rows); the 4 baselines in a 2×2 grid on the right */
+@media screen and (max-width: 736px) {
+  #policy .pr-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+#policy .pr-fail { margin-top: 1.75em; }
+#policy .pr-fail[hidden] { display: none; }
+
+#policy .pr-fail h4 {
+  margin: 0 0 0.6em;
+  font-size: 1em;
+  line-height: 1.4em;
+  color: black;
+}
+
+#policy .pr-fail-note {
+  font-size: 0.85em;
+  font-weight: 700;
+  line-height: 1.4em;
+  color: #c62f24;
+}
+
+/* Red border over a baseline video from its failure time until it loops */
+#policy .pr-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border: 4px solid #d0453b;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+#policy .pr-frame.failing::before { opacity: 1; }
+
 #policy .pr-cell { display: flex; flex-direction: column; gap: 0.35em; min-width: 0; }
-#policy .pr-cell.ours { grid-row: span 2; }
-#policy .pr-cell.ours .pr-frame { flex: 1; aspect-ratio: auto; min-height: 0; }
 
 #policy .pr-cell-name {
-  font-size: 0.75em;
+  font-size: 0.88em;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -149,17 +181,36 @@
   color: #333;
 }
 
-#policy .pr-cell.ours .pr-cell-name { font-weight: bold; color: var(--ours); font-size: 0.9em; }
-
 #policy .pr-frame {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   border-radius: 6px;
   background: #f4f4f4;
 }
 
-#policy .pr-cell.ours .pr-frame { box-shadow: 0 0 0 3px var(--ours); }
+/* Hover enlarges a rollout in place; edge columns grow inward so they stay on the page */
+@media (hover: hover) {
+  #policy .pr-frame {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  #policy .pr-cell:hover .pr-frame {
+    z-index: 10;
+    transform: scale(2);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  #policy .pr-cell.first .pr-frame { transform-origin: left center; }
+  #policy .pr-cell.last .pr-frame { transform-origin: right center; }
+}
+
+@media screen and (hover: hover) and (max-width: 736px) {
+  #policy .pr-cell.last:nth-child(odd) .pr-frame,
+  #policy .pr-cell:nth-child(odd) .pr-frame { transform-origin: left center; }
+  #policy .pr-cell.first:nth-child(even) .pr-frame,
+  #policy .pr-cell:nth-child(even) .pr-frame { transform-origin: right center; }
+}
 
 #policy .pr-frame video { display: block; width: 100%; height: 100%; object-fit: cover; }
 
@@ -178,15 +229,42 @@
   color: #999;
 }
 
+/* Seek bar: a thin track on the bottom edge with a taller invisible hit area */
+#policy .pr-seek {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 10px;
+  cursor: pointer;
+  touch-action: none;
+}
+
+#policy .pr-seek::before,
+#policy .pr-seek-fill {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+}
+
+#policy .pr-seek::before { right: 0; background: rgba(255, 255, 255, 0.35); }
+#policy .pr-seek-fill { width: 0; background: var(--ours); }
+#policy .pr-seek:hover::before, #policy .pr-seek:hover .pr-seek-fill { height: 5px; }
+#policy .pr-frame.missing .pr-seek { display: none; }
+
 #policy .pr-speed {
   position: absolute;
+  z-index: 2;
+  top: 6px;
   right: 6px;
-  bottom: 6px;
   padding: 2px 7px;
   border-radius: 4px;
   background: rgba(0, 0, 0, 0.6);
   color: #fff;
   font-family: monospace;
-  font-size: 11px;
-  line-height: 16px;
+  font-size: 13px;
+  line-height: 18px;
 }

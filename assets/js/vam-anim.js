@@ -10,7 +10,7 @@
     { name: 'Inputs',             start: 0,    text: 'Each aligned human–robot pair becomes two token streams. A video VAE encodes head-camera frames into a context latent z₀ and future latents z₁, z₂; embodiment-specific encoders embed the action chunk a and state s.' },
     { name: 'Shared transformer', start: 4,    text: 'Both streams are concatenated into one sequence for a video-action diffusion transformer. They share all transformer weights; rotary positions and CLIP cross-attention are reset per stream.' },
     { name: 'Joint co-training',  start: 7.5,  text: 'Joint co-training keeps the streams attention-isolated: each predicts its own future video and actions with a block-causal mask, so human data influences the robot only through shared weights.' },
-    { name: 'Style transfer',     start: 11.5, text: 'Human-to-robot style transfer: on top of the co-training mask, the robot’s predicted frames z₁ᴿ, z₂ᴿ also attend to the clean frames z₀ᴴ, z₁ᴴ, z₂ᴴ of the aligned human clip, so the robot’s future video is predicted from the human demonstration.' },
+    { name: 'Style transfer',     start: 11.5, text: 'Human-to-robot style transfer: the robot’s future frames z₁ᴿ, z₂ᴿ are predicted from the clean frames z₀ᴴ, z₁ᴴ, z₂ᴴ of the aligned human clip. The robot’s own context latent and action/state tokens are masked, leaving only its CLIP scene embedding, and only the robot video is supervised. The map overlays both objectives.' },
     { name: 'Deployment',         start: 15.5, text: 'At deployment only the robot stream runs. The policy predicts 16-step action chunks and executes the first 8 before replanning. Policy is tested on scenes seen only in human data.' },
   ];
   const END = 19.5, LOOP = 22;
@@ -63,8 +63,8 @@
           ${[2, 1].map((i) => `<rect x="${24 + i * 6}" y="${y + 58 - i * 6}" width="128" height="84" rx="3" fill="#fff" stroke="${s.color}" stroke-width="2" opacity="${1 - i * 0.3}"/>`).join('')}
           <foreignObject x="24" y="${y + 58}" width="128" height="84"><video xmlns="http://www.w3.org/1999/xhtml" data-in-vid="${s.id}" src="${CLIP[s.id].src}" muted playsinline preload="auto" style="display:block;width:100%;height:100%;object-fit:cover;border-radius:3px;background:#111"></video></foreignObject>
           <rect x="24" y="${y + 58}" width="128" height="84" rx="3" fill="none" stroke="${s.color}" stroke-width="3"/>
-          <rect x="28" y="${y + 62}" width="${CLIP.name.length * 5.6 + 10}" height="15" rx="3" fill="${CLIP.color}"/>
-          <text x="33" y="${y + 73}" font-size="10" fill="#fff">${CLIP.name}</text>
+          <rect x="28" y="${y + 62}" width="${CLIP.name.length * 6.2 + 10}" height="16" rx="3" fill="${CLIP.color}"/>
+          <text x="33" y="${y + 73}" font-size="11" fill="#fff">${CLIP.name}</text>
         </g>
         ${arrow(`${s.id}a1`, `M170,${y + 92} L184,${y + 92}`, s.color)}
         ${arrow(`${s.id}a2`, `M170,${y + 138} L184,${y + 138}`, s.color)}
@@ -75,9 +75,9 @@
         ${arrow(`${s.id}a3`, `M248,${y + 101} L266,${y + 101}`, s.color)}
         ${tokens}
         <g data-g="${s.id}toklab">
-          ${txt(285, y + 136, 'ctx', `text-anchor="middle" fill="${C.muted}" font-size="12"`)}
-          ${txt(352, y + 136, 'pred frames', `text-anchor="middle" fill="${C.muted}" font-size="12"`)}
-          ${txt(426, y + 136, 'a · s', `text-anchor="middle" fill="${C.muted}" font-size="12"`)}
+          ${txt(285, y + 136, 'ctx', `text-anchor="middle" fill="${C.muted}" font-size="13"`)}
+          ${txt(352, y + 136, 'pred frames', `text-anchor="middle" fill="${C.muted}" font-size="13"`)}
+          ${txt(426, y + 136, 'a · s', `text-anchor="middle" fill="${C.muted}" font-size="13"`)}
         </g>
       </g>`;
   };
@@ -102,7 +102,7 @@
 
         ${STREAMS.map(stream).join('')}
 
-        ${arrow('todit', 'M458,101 L480,150', C.h)}${arrow('todit', 'M458,306 L480,262', C.r)}
+        ${arrow('todith', 'M458,101 L480,150', C.h)}${arrow('todit', 'M458,306 L480,262', C.r)}
         <g data-g="dit">
           <rect x="482" y="96" width="176" height="220" rx="8" fill="#fff" stroke="${C.slate}" stroke-width="2"/>
           <text x="570" y="196" font-size="18" fill="${C.ink}" text-anchor="middle">Diffusion</text>
@@ -140,8 +140,7 @@
           <rect x="752" y="112" width="280" height="210" rx="3" fill="none" stroke="${C.r}" stroke-width="3"/>
           <rect x="752" y="292" width="280" height="30" fill="rgba(0,0,0,0.55)"/>
           <text x="892" y="312" font-size="14" fill="#fff" text-anchor="middle">Scenes seen only in human data</text>
-          ${txt(1046, 196, 'robot execution', `fill="${C.r}" font-size="16"`)}
-          ${[''].map((l, i) => txt(1046, 222 + i * 21, l, 'fill="#555" font-size="14"')).join('')}
+          ${txt(892, 346, 'robot execution', `fill="${C.r}" font-size="16" text-anchor="middle"`)}
         </g>
       </svg>
     </div>
@@ -182,6 +181,7 @@
     });
 
     draw('todit', ramp(t, 4, 4.5));
+    draw('todith', ramp(t, 4, 4.5), 1 - dep);   // human input is unused at deployment
     op('dit', ramp(t, 4.2, 4.8));
     op('shared', ramp(t, 5, 5.5));
 

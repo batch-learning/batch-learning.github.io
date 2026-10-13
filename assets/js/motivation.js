@@ -10,7 +10,7 @@
     // name: full label (video badge + legend); short: label inside the timeline bar
     grasp:   { name: 'Grasp cup handle',         short: 'Grasp',     color: 'oklch(0.62 0.12 250)' },
     lift:    { name: 'Lift cup upward',          short: 'Lift',      color: 'oklch(0.62 0.12 190)' },
-    handover:{ name: 'Hand over cup from one arm to another',  short: 'Hand over', color: 'oklch(0.62 0.12 130)' },
+    handover:{ name: 'Hand over cup from one arm to the other',  short: 'Hand over', color: 'oklch(0.62 0.12 130)' },
     place:   { name: 'Place cup on saucer',      short: 'Place',     color: 'oklch(0.62 0.12 60)' },
   };
 
@@ -253,7 +253,7 @@
 
   const MODE_NOTES = {
     raw: '',
-    random: 'Without alignment, human and robot segments are sampled independently. Differences in execution speed mean the segments usually come from different phases of the task.',
+    random: 'In prior works (e.g., EgoVerse), human and robot segments are sampled independently. Differences in execution speed mean the segments usually come from different phases of the task.',
     aligned: 'BATCH learns self-supervised temporal features with cycle consistency, then uses DTW in that feature space to pair each robot segment with the human segment of the same phase, accounting for speed differences and irrelevant segments.',
   };
   $('[data-role=human-note]').textContent = rawNote;
