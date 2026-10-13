@@ -12,6 +12,49 @@
   text-align: center;
 }
 
+/* the theme greys out <b>; key phrases in the intro should stand out instead */
+#policy > p b { color: black; font-weight: 700; }
+
+/* ---- Training setup: pretrain on robot data, post-train with a few human demos, deploy in human-only scenes ---- */
+#policy .pr-setup {
+  display: flex;
+  align-items: stretch;
+  gap: 0.6em;
+  margin: 1.25em 0 0.5em;
+}
+
+#policy .pr-step {
+  flex: 1;
+  padding: 0.6em 0.9em;
+  border: solid 1px var(--line);
+  border-radius: 8px;
+  font-size: 0.8em;
+  line-height: 1.45em;
+  color: #555;
+}
+
+#policy .pr-step span {
+  display: block;
+  margin-bottom: 0.15em;
+  font-weight: bold;
+  color: black;
+}
+
+/* the post-training step is the contribution: accent it */
+#policy .pr-step:nth-child(3) { border-color: var(--ours); background: color-mix(in srgb, var(--ours) 6%, #fff); }
+#policy .pr-step:nth-child(3) span { color: var(--ours); }
+
+#policy .pr-arrow {
+  display: flex;
+  align-items: center;
+  color: #aaa;
+}
+
+@media screen and (max-width: 736px) {
+  #policy .pr-setup { flex-direction: column; }
+  #policy .pr-arrow { justify-content: center; transform: rotate(90deg); }
+}
+
 /* ---- Charts ---- */
 #policy .pr-charts {
   display: grid;

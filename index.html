@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="assets/css/main.css?v=605f7baf" />
   <link rel="stylesheet" href="assets/css/alignment.css?v=c43cd801" />
   <link rel="stylesheet" href="assets/css/motivation.css?v=65a059db" />
-  <link rel="stylesheet" href="assets/css/policy.css?v=b1f49bc3" />
+  <link rel="stylesheet" href="assets/css/policy.css?v=4570983c" />
   <link rel="stylesheet" href="assets/css/method.css?v=8c4ddd09" />
   <link rel="icon" href="images/favicon.svg">
 
@@ -210,12 +210,24 @@
       <div id="policy">
         <h3>Policy Results</h3>
         <p style="color: black;">
-          We evaluate policies on two real-world manipulation tasks under unseen configurations: new backgrounds, target
-          and distractor objects for <em>Object in Container</em>, and new objects and environments for
-          <em>Cup on Saucer</em>. BATCH achieves the strongest performance on both tasks. Removing behavior alignment and
-          randomly pairing human and robot trajectories instead degrades performance on both, showing that
-          cross-embodiment supervision works best when sampling human and robot data with aligned behavior.
+          We start from a policy <b>pretrained only on in-domain robot demonstrations</b>, then <b>post-train</b> it with
+          just <b>5–8 human demonstrations per scenario</b>, recorded in scenes the robot has never seen. We test the robot
+          in these novel scenes on two real-world tasks: <em>Object in Container</em>, with new backgrounds and new target
+          and distractor objects, and <em>Cup on Saucer</em>, with new objects and environments. BATCH achieves the
+          strongest performance on both. <b>Behavior alignment and the human-to-robot style-transfer objective together
+          enable the most post-training transfer</b>, and removing either one hurts. Pairing the same human data with
+          robot trajectories at random instead of by behavior (<em>BATCH w/o alignment</em>) drops the score from 0.63 to
+          0.42 on <em>Object in Container</em> and the success rate from 83.3% to 50.0% on <em>Cup on Saucer</em>, and
+          post-training on the same human data with plain co-training instead of style transfer (<em>EgoVerse</em>) also
+          falls short of BATCH on both tasks.
         </p>
+        <div class="pr-setup">
+          <div class="pr-step"><span>1 · Pretrain</span>robot demonstrations only, in-domain scenes</div>
+          <div class="pr-arrow">&rarr;</div>
+          <div class="pr-step"><span>2 · Post-train with BATCH</span>+ 5–8 aligned human demonstrations per new scenario</div>
+          <div class="pr-arrow">&rarr;</div>
+          <div class="pr-step"><span>3 · Deploy</span>robot in scenes seen only in human data</div>
+        </div>
         <div class="pr-charts" data-role="charts"></div>
         <div class="pr-bar-ctrl">
           <div class="pr-seg" data-role="r-tasks"></div>
